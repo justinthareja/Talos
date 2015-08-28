@@ -10,9 +10,9 @@ var _requestPromise = require('request-promise');
 
 var _requestPromise2 = _interopRequireDefault(_requestPromise);
 
-var _underscore = require('underscore');
+var _lodash = require('lodash');
 
-var _underscore2 = _interopRequireDefault(_underscore);
+var _lodash2 = _interopRequireDefault(_lodash);
 
 /*
 A better craigslist
@@ -88,7 +88,7 @@ search('couch');
 // sift takes a collection of objects and a property shared across all objects,
 // and filters out all duplicate entries of the specified property
 function sift(collection, property) {
-  var filtered = _underscore2['default'].reduce(collection, function (memo, obj) {
+  var filtered = _lodash2['default'].reduce(collection, function (memo, obj) {
     var key = obj[property];
     if (!memo[key]) {
       memo[key] = obj;
@@ -160,22 +160,17 @@ function getPostBody($) {
   });
 }
 
+function getContactInfo($) {}
+
 function getPostDetails(body) {
   console.log('getPostDetails invoked');
   var $ = _cheerio2['default'].load(body);
   // getBody
+  var text = getPostBody($);
   // getContactInfo
   // getContactName
   // getContactPhone
   // getContactEmail
-  // debugger;
-  console.log(getPostBody($));
-  // var textArray = $('#postingbody')[0].children.map(function(el, i){
-  // return el.data
-  // })
-  // textArray.filter(function(el) {
-  //   return /\S/.test(el) && el !== undefined;
-  // })
 }
 
 // Extracts an object's values into an array

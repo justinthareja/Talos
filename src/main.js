@@ -1,7 +1,6 @@
 import cheerio from 'cheerio';
 import request from 'request-promise';
 import _ from 'lodash';
-import x from 'x-ray';
 
 /*
 A better craigslist
