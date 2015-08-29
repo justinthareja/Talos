@@ -2,8 +2,26 @@ import xray from 'x-ray';
 import _ from 'lodash';
 
 let x = xray();
-let url = 'http://sfbay.craigslist.org/search/sss?query=car&sort=rel';
+const url = 'http://sfbay.craigslist.org/search/sss?query=toys&sort=rel';
+// const scope = '.row';
+// const nextButton = '.button.next@href'
+// const propsToSelectors = {
+//   url: '.hdrlnk@href',
+//   title: '.hdrlnk',
+//   price: '.l2 > .price',
+//   lastUpdated: 'time@title'
+// }
 
+const selectors = {
+  scope: '.row',
+  nextPage: '.button.next@href',
+  props: {
+    url: '.hdrlnk@href',
+    title: '.hdrlnk',
+    price: '.l2 > .price',
+    lastUpdated: 'time@title'
+  }
+}
 // get an array of all links
 // x(url, ['.hdrlnk@href'])(log);
 
@@ -16,12 +34,23 @@ let url = 'http://sfbay.craigslist.org/search/sss?query=car&sort=rel';
 // get an array of all timestamps
 // x(url, ['time@title'])(log);
 
+// get a collection of objects with 
+// props included in the third parameter
+// that's way too easy!
+// x(url, selectors.scope, [selectors.props])
+// .paginate(selectors.nextPage)
+// .limit(2)(log)
+
+
+
+
+
 
 function log(err, content) {
   if(err) {
     console.log(err)
   }
-  console.log(content);
+  console.log('content.length =', content.length);
 }
 
 function debug(err, content) {
@@ -35,17 +64,17 @@ function handleError (err) {
 const properties = [
   'url',
   'title',
-  'pricetag',
-  'timestamp'
+  'price',
+  'lastUpdated'
 ];
 
 // selectors correspond to properties by index
-const selectors = [
-  ['.hdrlnk@href'],
-  ['.hdrlnk'],
-  ['.l2 > .price'],
-  ['time@title'],
-];
+// const selectors = [
+//   ['.hdrlnk@href'],
+//   ['.hdrlnk'],
+//   ['.l2 > .price'],
+//   ['time@title'],
+// ];
 
 /* convert array 
 
@@ -84,9 +113,11 @@ function getSearchResults(searchUrl) {
 }
 
 // promisify x-ray
-function scrape(url, query) {
+function scrape(url, scope, selector) {
   return new Promise(function(resolve, reject) {
-    x(url, query)(function(err, content) {
+    x(url, scope, selector)
+    .paginate(selectors.nextPage)
+    .limit(2)(function(err, content) {
       if (err) reject(err)
       resolve(content)
     });
@@ -95,14 +126,29 @@ function scrape(url, query) {
 
 // TODO: write a generateUrl function that takes an obj of params and turns it into a craigslist url
  
-function search(url) {
-  return getSearchResults(url)
-    .then(zip)
-    .then(addPropertyLabels)
-    // .then(debug)
-    .catch(handleError)
-}
+// function search(url) {
+//   return getSearchResults(url)
+//     .then(zip)
+//     .then(addPropertyLabels)
+//     // .then(debug)
+//     .catch(handleError)
+// }
 
-search(url)
-  // .then(debug);
+// search(url)
+//   .then((url) => {
+//     console.log(url)
+//   });
+
+// function search (url) {
+//   return new Promise(function(resolve, reject) {
+//     resolve(x(url, scope, propsToSelectorsMap)
+//     .paginate('.button.next@href')
+//     .limit(2))
+//   })
+// }
+
+// se
+
+
+
 

@@ -13,8 +13,26 @@ var _lodash = require('lodash');
 var _lodash2 = _interopRequireDefault(_lodash);
 
 var x = (0, _xRay2['default'])();
-var url = 'http://sfbay.craigslist.org/search/sss?query=car&sort=rel';
+var url = 'http://sfbay.craigslist.org/search/sss?query=toys&sort=rel';
+// const scope = '.row';
+// const nextButton = '.button.next@href'
+// const propsToSelectors = {
+//   url: '.hdrlnk@href',
+//   title: '.hdrlnk',
+//   price: '.l2 > .price',
+//   lastUpdated: 'time@title'
+// }
 
+var selectors = {
+  scope: '.row',
+  nextPage: '.button.next@href',
+  props: {
+    url: '.hdrlnk@href',
+    title: '.hdrlnk',
+    price: '.l2 > .price',
+    lastUpdated: 'time@title'
+  }
+};
 // get an array of all links
 // x(url, ['.hdrlnk@href'])(log);
 
@@ -27,29 +45,45 @@ var url = 'http://sfbay.craigslist.org/search/sss?query=car&sort=rel';
 // get an array of all timestamps
 // x(url, ['time@title'])(log);
 
+// get a collection of objects with
+// props included in the third parameter
+// that's way too easy!
+// x(url, selectors.scope, [selectors.props])
+// .paginate(selectors.nextPage)
+// .limit(2)(log)
+
 function log(err, content) {
   if (err) {
     console.log(err);
   }
-  console.log(content);
+  console.log('content.length =', content.length);
 }
 
 function debug(err, content) {
   debugger;
 }
 
-var properties = ['url', 'title', 'pricetag', 'timestamp'];
+function handleError(err) {
+  console.log(err);
+}
+
+var properties = ['url', 'title', 'price', 'lastUpdated'];
 
 // selectors correspond to properties by index
-var selectors = [['.hdrlnk@href'], ['.hdrlnk'], ['.l2 > .price'], ['time@title']];
+// const selectors = [
+//   ['.hdrlnk@href'],
+//   ['.hdrlnk'],
+//   ['.l2 > .price'],
+//   ['time@title'],
+// ];
 
 /* convert array 
 
 [
-  'http:craigslist',
+  'http://craigslist.org',
   'Super sports car',
-  30, 
-  '5:00am'
+  3000, 
+  '5:00am on a Thursday'
 ]
 
 into 
@@ -62,44 +96,58 @@ into
 }
 
 */
+
+// returns an array of post objects with proper keys corresponding to each prop
 function addPropertyLabels(posts) {
   return posts.map(function (post) {
     return _lodash2['default'].zipObject(properties, post);
   });
 }
 
+// zips search results into an array of post arrays
+// each post array contains all properties in the properties array
 function zip(searchResults) {
   return _lodash2['default'].zip.apply(_lodash2['default'], _toConsumableArray(searchResults));
 }
 
-// a function that takes a craigslist searchUrl and returns the properties
+// takes a craigslist searchUrl and returns an array of unlinked search results
 function getSearchResults(searchUrl) {
   return Promise.all(selectors.map(function (selector) {
     return scrape(searchUrl, selector);
   }));
 }
 
-function handleError(err) {
-  console.log(err);
-}
-
 // promisify x-ray
-function scrape(url, query) {
+function scrape(url, scope, selector) {
   return new Promise(function (resolve, reject) {
-    x(url, query)(function (err, content) {
+    x(url, scope, selector).paginate(selectors.nextPage).limit(2)(function (err, content) {
       if (err) reject(err);
       resolve(content);
     });
   });
 }
 
-// write a generateUrl function that takes an obj of params and turns it into a craigslist url
+// TODO: write a generateUrl function that takes an obj of params and turns it into a craigslist url
 
-function search(url) {
-  return getSearchResults(url).then(zip).then(addPropertyLabels)
-  // .then(debug)
-  ['catch'](handleError);
-}
+// function search(url) {
+//   return getSearchResults(url)
+//     .then(zip)
+//     .then(addPropertyLabels)
+//     // .then(debug)
+//     .catch(handleError)
+// }
 
-search(url);
-// .then(debug);
+// search(url)
+//   .then((url) => {
+//     console.log(url)
+//   });
+
+// function search (url) {
+//   return new Promise(function(resolve, reject) {
+//     resolve(x(url, scope, propsToSelectorsMap)
+//     .paginate('.button.next@href')
+//     .limit(2))
+//   })
+// }
+
+// se
