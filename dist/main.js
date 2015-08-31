@@ -190,3 +190,5 @@ function detatchCheerioMetaData(cheerioObj) {
   }
   return obj;
 }
+
+(function () {})();

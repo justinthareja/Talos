@@ -1,14 +1,16 @@
+import 'babel/polyfill';
 import xray from 'x-ray';
 import _ from 'lodash';
 
 let x = xray();
 
+//Parameters 
 const host = 'http://sfbay.craigslist.org';
 const searchUrl = host + '/search/rrr?sort=rel&query=something';
-const postUrl = host + '/sby/tlg/5184362835.html'
+const postUrl = host + '/sby/for/5182969996.html';
 const searchScope = '.row';
 const nextSearchPage = '.button.next@href';
-const props = {
+const searchProps = {
   postUrl: '.hdrlnk@href',
   title: '.hdrlnk',
   price: '.l2 > .price',
@@ -16,17 +18,31 @@ const props = {
   location: '.pnr small'
 };
 const postProps = {
-  contact: x('#replylink@href', {
-    name: '.reply_options ul > li',
-    phoneNumber:'.replytellink@href',
-    email: '.anonemail'
-  }),
+  body: '#postingbody', 
   title: 'title',
+  images: ['#thumbs a@href'],
+  location: {
+    region: '.postingtitletext small',
+    lat: '#map@data-latitude',
+    lon: '#map@data-longitude'
+  },
+  price: '.price',
+  contact: x('#replylink@href', {
+    name: '.reply_options ul > li', 
+    phone:'.replytellink@href',
+    email: '.anonemail'
+  })
 }
 
+function log(stuff) {
+  console.log(stuff)
+  return stuff;
+}
+
+// Paginated search tool
 function search(searchUrl, pages = 1) {
   return new Promise((resolve, reject) => {
-    x(searchUrl, searchScope, [props])
+    x(searchUrl, searchScope, [searchProps])
       .paginate(nextSearchPage)
       .limit(pages)((err, results) => {
         if (err) reject(err);
@@ -35,8 +51,9 @@ function search(searchUrl, pages = 1) {
   });
 }
 
-
-function getPost (postUrl) {
+// Get post details from a valid craigslist post url
+// TODO: add error handling for urls that have been taken down
+function getPost(postUrl) {
   return new Promise((resolve, reject) => {
     x(postUrl, postProps)((err, post) => {
       if (err) reject(err);
@@ -45,52 +62,54 @@ function getPost (postUrl) {
   });
 }
 
-function log(stuff) {
-  console.log(stuff)
-  return stuff;
+function cleanPost(post) {
+  post.body.trim(); 
+  post.contact.name = validateName(post.contact.name);
+  post.location.region = removeParens(post.location.region).trim(); 
+  post.contact.phone = cleanNumber(post.contact.phone);
+  return post; 
 }
 
-search(searchUrl)
-  .then(log)
-  .then(results => {
-    console.log(results[0].postUrl);
-    return getPost(results[0].postUrl)
-  })
-  .then(log)
+/* CLEANING FUNCTIONS */
+function validateName(str) {
+  return /^[A-z ]+$/.test(str) ? str : null;
+}
 
-// function getReplyUrl(postUrl) {
-//   var arr = postUrl.split('.html')[0].split('/');
-//   arr.splice(3, 0, 'reply');
-//   return arr.join('/');
-// }
-// rewrite in cleanup function
-// function checkName (postUrl) {
-//   return new Promise((resolve, reject) => {
-//     x(getReplyUrl(postUrl), '.reply_options > b:first-child')((err, firstHeader) => {
-//        if (err) reject(err)
-//        resolve([postUrl, firstHeader === 'contact name:']); 
-//     });
-//   });  
-// }
-// console.log('reply url=', getReplyUrl(postUrl));
-// x(getReplyUrl(postUrl), {
-//   name: '.reply_options ul > li',
-//   phoneNumber:'.replytellink@href',
-//   email: '.anonemail' 
-// })((err, content) => {
-//   if(err) console.log(err)
-//   console.log(content)
-// })
+function removeParens(str) {
+  return str.replace(/[()]/g, '');
+}
 
-// console.log(getReplyUrl(postUrl))
-
-// checkName('http://sfbay.craigslist.org/sfc/cto/5195375957.html')
-//   .then(nameExists => {
-//     console.log('this post has a contact name:', nameExists);
-//   })
-//   .catch(nope => {
-//     console.log('nope', nope);
-//   })
+function cleanNumber(str) {
+  return str.split(':')[1];
+}
 
 
+function asyncSearch(searchUrl) {
+  return search( searchUrl )
+    .then( results => {
+      it.next( results )
+    } )
+    .catch( err => {
+      console.log( err );
+    } );
+}
+
+function asyncGetPost(postUrl) {
+  return getPost( postUrl )
+    .then( post => {
+      it.next( post );
+    } );
+}
+
+// generator function controls the flow of all async logic in sync looking syntax
+// NOTE: for current state of babel generator functions need to be established using function expressions
+let imFeelingLucky = function*(searchUrl) {
+  let searchResults = yield asyncSearch( searchUrl );
+  let firstPostUrl = searchResults[0].postUrl;
+  let post = yield asyncGetPost( firstPostUrl );
+  console.log( post )
+}
+
+let it = imFeelingLucky('http://sfbay.craigslist.org/search/sss?sort=rel&query=water%20fun');
+it.next();
 
