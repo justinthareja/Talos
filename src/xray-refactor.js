@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 let x = xray();
 
-//Parameters 
+// Parameters
 const host = 'http://sfbay.craigslist.org';
 const searchUrl = host + '/search/rrr?sort=rel&query=something';
 const postUrl = host + '/sby/for/5182969996.html';
@@ -67,49 +67,65 @@ function cleanPost(post) {
   post.contact.name = validateName(post.contact.name);
   post.location.region = removeParens(post.location.region).trim(); 
   post.contact.phone = cleanNumber(post.contact.phone);
+  console.log(post);
+    
   return post; 
 }
 
 /* CLEANING FUNCTIONS */
 function validateName(str) {
+  console.log('validateName invoked with', str)
   return /^[A-z ]+$/.test(str) ? str : null;
 }
 
 function removeParens(str) {
+  console.log('removeParens invoked with', str)
   return str.replace(/[()]/g, '');
 }
 
 function cleanNumber(str) {
-  return str.split(':')[1];
+  console.log('clean number invoked with str');
+  return str ? str.split(':')[1] : null
 }
 
 
-function asyncSearch(searchUrl) {
-  return search( searchUrl )
-    .then( results => {
-      it.next( results )
-    } )
-    .catch( err => {
-      console.log( err );
-    } );
-}
-
-function asyncGetPost(postUrl) {
-  return getPost( postUrl )
-    .then( post => {
-      it.next( post );
-    } );
-}
-
-// generator function controls the flow of all async logic in sync looking syntax
+// generator function controls the flow of all async logic by using appropriate async functions
 // NOTE: for current state of babel generator functions need to be established using function expressions
+// grabs the first post details from a search result 
+// question: what's the best way to handle the final result?? a callback?
 let imFeelingLucky = function*(searchUrl) {
-  let searchResults = yield asyncSearch( searchUrl );
+  let searchResults = yield search( searchUrl );
   let firstPostUrl = searchResults[0].postUrl;
-  let post = yield asyncGetPost( firstPostUrl );
-  console.log( post )
+  let post = yield getPost( firstPostUrl );
+  return cleanPost( post );
 }
 
-let it = imFeelingLucky('http://sfbay.craigslist.org/search/sss?sort=rel&query=water%20fun');
-it.next();
+// wrapper function to run a generator function to completion
+// TODO: implement error handling
+function runGenerator(g, cb) {
+    let it = g(), ret;
+    // asynchronously iterate over generator
+    (function iterate(val){
+        ret = it.next( val );
+        if (!ret.done) {
+            // poor man's "is it a promise?" test
+            if ("then" in ret.value) {
+                // wait on the promise
+                ret.value.then( iterate );
+            // immediate value: just send right back in
+            } else {
+                // avoid synchronous recursion
+                setTimeout( function(){
+                    iterate( ret.value );
+                }, 0 );
+            }
+        // when finished invoke the callback with generator's return value
+        } else {
+          cb( ret.value );
+        }
+    })();
+    // return ret;
+}
 
+// kick off the imFeelingLucky chain of events
+runGenerator(imFeelingLucky.bind(null, searchUrl), log);
