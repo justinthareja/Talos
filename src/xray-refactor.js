@@ -11,11 +11,11 @@ const postUrl = host + '/sby/for/5182969996.html';
 const searchScope = '.row';
 const nextSearchPage = '.button.next@href';
 const searchProps = {
-  postUrl: '.hdrlnk@href',
-  title: '.hdrlnk',
-  price: '.l2 > .price',
   lastUpdated: 'time@title',
-  location: '.pnr small'
+  location: '.pnr small',
+  postUrl: '.hdrlnk@href',
+  price: '.l2 > .price',
+  title: '.hdrlnk'
 };
 const postProps = {
   body: '#postingbody', 
@@ -29,9 +29,21 @@ const postProps = {
   price: '.price',
   contact: x('#replylink@href', {
     name: '.reply_options ul > li', 
-    phone:'.replytellink@href',
-    email: '.anonemail'
+    phone:'.replytellink@href', 
+    email: '.anonemail' 
   })
+}
+
+// A map of dirty fields to their cleaning functions
+const dirtyFields = {
+  body: trim,
+  contact: {
+    name: validateName,
+    phone: cleanNumber
+  },
+  location: {
+    region: removeParens
+  }
 }
 
 function log(stuff) {
@@ -56,51 +68,64 @@ function search(searchUrl, pages = 1) {
 function getPost(postUrl) {
   return new Promise((resolve, reject) => {
     x(postUrl, postProps)((err, post) => {
+      console.log(post);
       if (err) reject(err);
       resolve(post);
     });
   });
 }
 
-function cleanPost(post) {
-  post.body.trim(); 
-  post.contact.name = validateName(post.contact.name);
-  post.location.region = removeParens(post.location.region).trim(); 
-  post.contact.phone = cleanNumber(post.contact.phone);
-  console.log(post);
-    
-  return post; 
+function cleanPost(post, nest = []) {
+  let map = dirtyFields;
+  if(nest.length) {
+    map = _.reduce(nest, function(memo, key) {
+      return map[key];
+    }, map);
+  }
+  _.forEach(post, function(content, field, post) {
+    if (content instanceof Object && !Array.isArray(content)) {
+      post = cleanPost(content, nest.concat(field));
+    } else if (field in map) {
+      post[field] = map[field](content);
+    }
+  });
+  return post;
 }
+
 
 /* CLEANING FUNCTIONS */
 function validateName(str) {
-  console.log('validateName invoked with', str)
   return /^[A-z ]+$/.test(str) ? str : null;
 }
 
 function removeParens(str) {
-  console.log('removeParens invoked with', str)
-  return str.replace(/[()]/g, '');
+  return str.replace(/[()]/g, '').trim();
 }
 
 function cleanNumber(str) {
-  console.log('clean number invoked with str');
-  return str ? str.split(':')[1] : null
+  return str.split(':')[1];
 }
+
+function trim(str) {
+  return str.trim();
+}
+
 
 
 // generator function controls the flow of all async logic by using appropriate async functions
 // NOTE: for current state of babel generator functions need to be established using function expressions
 // grabs the first post details from a search result 
-// question: what's the best way to handle the final result?? a callback?
+// REMEMBER: yield async expressions
 let imFeelingLucky = function*(searchUrl) {
   let searchResults = yield search( searchUrl );
   let firstPostUrl = searchResults[0].postUrl;
   let post = yield getPost( firstPostUrl );
-  return cleanPost( post );
+  console.log(post)
+  let cleaned = cleanPost( post );
+  return cleaned;
 }
 
-// wrapper function to run a generator function to completion
+// wrapper function to run a generator function which yields promises to completion
 // TODO: implement error handling
 function runGenerator(g, cb) {
     let it = g(), ret;
@@ -121,10 +146,9 @@ function runGenerator(g, cb) {
             }
         // when finished invoke the callback with generator's return value
         } else {
-          cb( ret.value );
+          if(cb) cb( ret.value );
         }
     })();
-    // return ret;
 }
 
 // kick off the imFeelingLucky chain of events

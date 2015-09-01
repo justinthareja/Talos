@@ -21,11 +21,11 @@ var postUrl = host + '/sby/for/5182969996.html';
 var searchScope = '.row';
 var nextSearchPage = '.button.next@href';
 var searchProps = {
-  postUrl: '.hdrlnk@href',
-  title: '.hdrlnk',
-  price: '.l2 > .price',
   lastUpdated: 'time@title',
-  location: '.pnr small'
+  location: '.pnr small',
+  postUrl: '.hdrlnk@href',
+  price: '.l2 > .price',
+  title: '.hdrlnk'
 };
 var postProps = {
   body: '#postingbody',
@@ -42,6 +42,18 @@ var postProps = {
     phone: '.replytellink@href',
     email: '.anonemail'
   })
+};
+
+// A map of dirty fields to their cleaning functions
+var dirtyFields = {
+  body: trim,
+  contact: {
+    name: validateName,
+    phone: cleanNumber
+  },
+  location: {
+    region: removeParens
+  }
 };
 
 function log(stuff) {
@@ -66,6 +78,7 @@ function search(searchUrl) {
 function getPost(postUrl) {
   return new Promise(function (resolve, reject) {
     x(postUrl, postProps)(function (err, post) {
+      console.log(post);
       if (err) reject(err);
       resolve(post);
     });
@@ -73,38 +86,48 @@ function getPost(postUrl) {
 }
 
 function cleanPost(post) {
-  post.body.trim();
-  post.contact.name = validateName(post.contact.name);
-  post.location.region = removeParens(post.location.region).trim();
-  post.contact.phone = cleanNumber(post.contact.phone);
-  console.log(post);
+  var nest = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
 
+  var map = dirtyFields;
+  if (nest.length) {
+    map = _lodash2['default'].reduce(nest, function (memo, key) {
+      return map[key];
+    }, map);
+  }
+  _lodash2['default'].forEach(post, function (content, field, post) {
+    if (content instanceof Object && !Array.isArray(content)) {
+      post = cleanPost(content, nest.concat(field));
+    } else if (field in map) {
+      post[field] = map[field](content);
+    }
+  });
   return post;
 }
 
 /* CLEANING FUNCTIONS */
 function validateName(str) {
-  console.log('validateName invoked with', str);
   return (/^[A-z ]+$/.test(str) ? str : null
   );
 }
 
 function removeParens(str) {
-  console.log('removeParens invoked with', str);
-  return str.replace(/[()]/g, '');
+  return str.replace(/[()]/g, '').trim();
 }
 
 function cleanNumber(str) {
-  console.log('clean number invoked with str');
-  return str ? str.split(':')[1] : null;
+  return str.split(':')[1];
+}
+
+function trim(str) {
+  return str.trim();
 }
 
 // generator function controls the flow of all async logic by using appropriate async functions
 // NOTE: for current state of babel generator functions need to be established using function expressions
 // grabs the first post details from a search result
-// question: what's the best way to handle the final result?? a callback?
+// REMEMBER: yield async expressions
 var imFeelingLucky = regeneratorRuntime.mark(function imFeelingLucky(searchUrl) {
-  var searchResults, firstPostUrl, post;
+  var searchResults, firstPostUrl, post, cleaned;
   return regeneratorRuntime.wrap(function imFeelingLucky$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
@@ -119,16 +142,19 @@ var imFeelingLucky = regeneratorRuntime.mark(function imFeelingLucky(searchUrl) 
 
       case 6:
         post = context$1$0.sent;
-        return context$1$0.abrupt('return', cleanPost(post));
 
-      case 8:
+        console.log(post);
+        cleaned = cleanPost(post);
+        return context$1$0.abrupt('return', cleaned);
+
+      case 10:
       case 'end':
         return context$1$0.stop();
     }
   }, imFeelingLucky, this);
 });
 
-// wrapper function to run a generator function to completion
+// wrapper function to run a generator function which yields promises to completion
 // TODO: implement error handling
 function runGenerator(g, cb) {
   var it = g(),
@@ -150,10 +176,9 @@ function runGenerator(g, cb) {
         }
       // when finished invoke the callback with generator's return value
     } else {
-        cb(ret.value);
+        if (cb) cb(ret.value);
       }
   })();
-  // return ret;
 }
 
 // kick off the imFeelingLucky chain of events
