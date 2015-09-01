@@ -8,7 +8,7 @@ let params = {
 // Kick it off
 getPost(params);
 
-function getPost ($scope) {
+export function getPost ($scope) {
   let postUrl = $scope.host + $scope.path;
   let spooky = new Spooky({
     casper: {
@@ -80,7 +80,7 @@ function getContactDetails() {
 
   if (this.fetchText('.reply_options > b:first-child') === 'contact name:') {
     contact.name = this.getElementInfo('.reply_options li').text;
-  } 
+  }
   contact.email = this.fetchText('.anonemail');
   contact.phone = this.getElementAttribute('.replytellink', 'href');  
 
