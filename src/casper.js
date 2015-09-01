@@ -1,20 +1,53 @@
-import casper from 'casper';
+import c from 'casper';
 import 'utils';
-let c = casper.create();
 
+let casper = c.create();
+let host = 'http://sfbay.craigslist.org';
+let postUrl = host + '/eby/ptd/5193255715.html'
+let post = {};
 
+casper.start(postUrl, getPostDetails)
+      .then(getContactDetails)
 
-let host = 'http:'
-
-c.start('http://sfbay.craigslist.org/eby/ptd/5193255715.html', () => {
-  console.log(c.getElementAttribute('#replylink', 'href'))
+casper.on('open', function (location) {
+  console.log('casper navigated to', location)
 })
+casper.run()
 
-// c.start('http://sfbay.craigslist.org/reply/sfo/hsh/5199980170', () => {
-//   console.log('captcha form found:', c.exists('#standalone_captcha'))
-//   console.log('posting body found:', c.exists('.posting'))
+function getPostDetails() {
 
-// })
+  let replylink = host + this.getElementAttribute('#replylink', 'href');
+  let location = post.location = {};
 
+  post.body = this.fetchText('#postingbody');
+  post.images = this.getElementsAttribute('#thumbs a', 'href');
+  post.title = this.fetchText('title');
+  post.url = this.getCurrentUrl();
+  post.price = this.fetchText('.price');
 
-c.run()
+  location.region = this.fetchText('.postingtitletext small');
+  location.lat = this.getElementAttribute('#map', 'data-latitude');
+  location.long = this.getElementAttribute('#map', 'data-longitude');
+
+  this.open(replylink);
+
+}
+
+function getContactDetails() {
+  let contact = post.contact = {};
+
+  contact.email = this.fetchText('.anonemail');
+
+  if (this.fetchText('.reply_options > b:first-child') === 'contact name:') {
+    contact.name = this.getElementInfo('.reply_options li').text
+  } else {
+    contact.name = null;
+  }
+  
+  if (this.exists('.replytellink')) {
+    contact.phone = this.getElementAttribute('.replytellink', 'href');
+  } else {
+    contact.phone = null;
+  }
+   console.log(JSON.stringify(post, null, 2));
+}

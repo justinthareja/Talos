@@ -5,7 +5,7 @@ import plumber from 'gulp-plumber';
 import gutil from 'gulp-util';
 
 var paths = { 
-  scripts: 'src/**/*.js'
+  scripts: ['src/**/*.js','spec/**/*.js']
 }
 
 gulp.task('babel', () => {
