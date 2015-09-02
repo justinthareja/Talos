@@ -8,7 +8,7 @@ let params = {
 // Kick it off
 getPost(params);
 
-export function getPost ($scope) {
+function getPost ($scope) {
   let postUrl = $scope.host + $scope.path;
   let spooky = new Spooky({
     casper: {

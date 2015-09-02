@@ -62,13 +62,6 @@ function search(searchUrl) {
     console.log(zip(results));
   })
 
-}
-
-var results = {
-  title: ['fat black dildo', 'game cube'],
-  timestamp: ['8am', '1:00pm'],
-  postUrl: ['http://word.com', 'http://chill.com']
-}
 
 function zip(resultsObj) {
   let len = Math.max.apply(null, (_.map(resultsObj, field => field.length)));
