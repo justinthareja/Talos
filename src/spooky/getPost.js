@@ -4,19 +4,20 @@ import _ from 'lodash';
 
 const params = {
   host: 'http://sfbay.craigslist.org',
-  path: '/eby/hsh/5202228137.html',
-  numSteps: 2
+  path: '/sby/cto/5205352863.html',
+  userAgent: 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1'
 };
 
-// Obj to serialize before passing in
+// Serialized helper functions
 let helpers = {
-  name: parseBody(nameExists)
+  name: serialize(nameExists)
 }
 
-// getPost takes a params object with ->
-  // host: 'http://sfbay.craigslist.org'
-  // path: '/sby/hsh/5200286628.html'
-function getPost ($scope) {
+// Kick it off
+getPost(_.extend(params, helpers));
+
+
+export function getPost ($scope) {
   const postUrl = $scope.host + $scope.path;
   let spooky = new Spooky({
     casper: {
@@ -30,15 +31,15 @@ function getPost ($scope) {
       throw e;
     }
     spooky.start(postUrl)
+    spooky.userAgent($scope.userAgent);
     // .then accepts a function twople:
       // twople[0] = global variables from the node ctx to be passed into casper contex
       // twople[1] = function invoked during appropriate step in the .then chain
-    // Ejects without returning a post
-    spooky.then([$scope, checkIfRemoved])
+    spooky.then([$scope, checkIfRemoved]); // Ejects without returning a post
     spooky.then([$scope, getPostDetails]);
-    // Ejects with no contact info found
-    spooky.then([$scope, checkCaptcha]);
+    spooky.then([$scope, checkCaptcha]); // Ejects with no contact info found
     spooky.then([$scope, getContactDetails]);
+    spooky.then([$scope, returnPost]);
     spooky.run();
   });  
 
@@ -66,7 +67,7 @@ function getPost ($scope) {
 
   spooky.on('got post', post => {
     // This is where the post object will live
-    // console.log('post received in node context', post);
+    console.log('post received in node context', post);
   });
 
   spooky.on('remote.message', msg => {
@@ -81,33 +82,6 @@ function getPost ($scope) {
 }
 
 /******CASPER FUNCTIONS******/
-function checkCaptcha() {
-  if(this.exists('form#standalone_captcha')) {
-    this.log('CAPTCHA SO HARD', 'error');
-    this.log('Error receiving post contact info', 'error');
-  } else {
-    this.log('NO CAPTCHA FOUND...GETTING CONTACT DETAILS', 'info');
-  }
-}
-
-function checkIfRemoved () {
-  if (this.exists('#has_been_removed')) {
-    this.log('POST REMOVED --- POPPING THE EJECT', 'info');
-    this.bypass(numSteps);
-  }
-}
-
-function nameExists () {
-  return this.fetchText('.reply_options > b:first-child') === 'contact name:';
-}
-
-// Need to serialize functions before passing them into casper
-function parseBody(fn) {
-  return {
-    arguments: arguments,
-    body: fn.toString().match(/function[^{]+\{([\s\S]*)\}$/)[1]
-  }
-}
 
 function getPostDetails() {
   // TODO: FILTER DUPLICATES
@@ -127,30 +101,52 @@ function getPostDetails() {
   location.lat = this.getElementAttribute('#map', 'data-latitude');
   location.long = this.getElementAttribute('#map', 'data-longitude');
 
-  // Grab link to contact info page. Host is injected on $scope
+  // Grab link and open contact info page. Host is injected on $scope
   let replyInfo = host + this.getElementAttribute('#replylink', 'href');
-  this.log('replyInfo =', replyInfo);
-  // replyInfo will be available in the next spooky.then invoked
   this.open(replyInfo);
 }
 
 function getContactDetails() {
   // Still has access to window.post defined in previous step
-  let nameExists = new Function(name.body);
-  let bound = nameExists.bind(this);
+  let nameExists = (new Function(name.body)).bind(this);
   let contact = window.post.contact = {};
   
-  contact.name = this.getElementInfo('.reply_options li').text;
+  contact.name = nameExists() ? this.getElementInfo('.reply_options li').text : null
   contact.email = this.fetchText('.anonemail');
   contact.phone = this.getElementAttribute('.replytellink', 'href');
-  console.log('name=', contact.name)
+}
+
+function returnPost() {
   this.emit('got post', window.post);
 }
 
-function sendResponse(responseCode, data) {
-  // TODO
+function checkCaptcha() {
+  if(this.exists('form#standalone_captcha')) {
+    window.post.contact = null;
+    this.log('CAPTCHA ALERT: Error receiving post contact info', 'error');
+    this.bypass(1);
+  } else {
+    this.log('No CAPTCHA found, getting contact details...', 'info');
+  }
 }
 
+function checkIfRemoved () {
+  if (this.exists('#has_been_removed')) {
+    window.post = null;
+    this.log('Error: Post Removed --- popping the Eject', 'error');
+    this.bypass(3);
+  }
+}
 
-// Kick it off
-getPost(_.extend(params, helpers));
+function nameExists () {
+  return this.fetchText('.reply_options > b:first-child') === 'contact name:';
+}
+
+// Need to serialize functions before passing them into casper
+function serialize(fn) {
+  return {
+    arguments: arguments,
+    body: fn.toString().match(/function[^{]+\{([\s\S]*)\}$/)[1]
+  }
+}
+
