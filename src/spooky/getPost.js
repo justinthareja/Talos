@@ -35,9 +35,9 @@ export function getPost ($scope) {
     // .then accepts a function twople:
       // twople[0] = global variables from the node ctx to be passed into casper contex
       // twople[1] = function invoked during appropriate step in the .then chain
-    spooky.then([$scope, checkIfRemoved]); // Ejects without returning a post
+    spooky.then([$scope, checkPostExists]); // Ejects returning post = null
     spooky.then([$scope, getPostDetails]);
-    spooky.then([$scope, checkCaptcha]); // Ejects with no contact info found
+    spooky.then([$scope, checkCaptcha]); // Ejects with no contact = null
     spooky.then([$scope, getContactDetails]);
     spooky.then([$scope, returnPost]);
     spooky.run();
@@ -82,7 +82,6 @@ export function getPost ($scope) {
 }
 
 /******CASPER FUNCTIONS******/
-
 function getPostDetails() {
   // TODO: FILTER DUPLICATES
   // Create the post object accumulator as a casper global
@@ -110,7 +109,7 @@ function getContactDetails() {
   // Still has access to window.post defined in previous step
   let nameExists = (new Function(name.body)).bind(this);
   let contact = window.post.contact = {};
-  
+
   contact.name = nameExists() ? this.getElementInfo('.reply_options li').text : null
   contact.email = this.fetchText('.anonemail');
   contact.phone = this.getElementAttribute('.replytellink', 'href');
@@ -130,7 +129,7 @@ function checkCaptcha() {
   }
 }
 
-function checkIfRemoved () {
+function checkPostExists() {
   if (this.exists('#has_been_removed')) {
     window.post = null;
     this.log('Error: Post Removed --- popping the Eject', 'error');
@@ -138,7 +137,7 @@ function checkIfRemoved () {
   }
 }
 
-function nameExists () {
+function nameExists() {
   return this.fetchText('.reply_options > b:first-child') === 'contact name:';
 }
 

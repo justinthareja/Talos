@@ -29,6 +29,7 @@ export function search($scope) {
     spooky.then([$scope, getResults]);
     spooky.run();
   });
+  
   /******NODE LISTENERS******/
   spooky.on('error', (e, stack) => {
     console.error(e);

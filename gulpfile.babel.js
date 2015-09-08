@@ -15,7 +15,7 @@ gulp.task('babel', () => {
     .on('error', (err) => {
       gutil.log(gutil.colors.red('Error transpiling to ES5'), err.stack);
     })
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(['dist', 'dist/spec']));
 });
 
 gulp.task('watch', () => {

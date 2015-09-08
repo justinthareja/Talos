@@ -2,7 +2,7 @@
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+require('babel/polyfill');
 
 var _xRay = require('x-ray');
 
@@ -13,141 +13,173 @@ var _lodash = require('lodash');
 var _lodash2 = _interopRequireDefault(_lodash);
 
 var x = (0, _xRay2['default'])();
-var url = 'http://sfbay.craigslist.org/search/sss?query=toys&sort=rel';
-// const scope = '.row';
-// const nextButton = '.button.next@href'
-// const propsToSelectors = {
-//   url: '.hdrlnk@href',
-//   title: '.hdrlnk',
-//   price: '.l2 > .price',
-//   lastUpdated: 'time@title'
-// }
 
-var selectors = {
-  scope: '.row',
-  nextPage: '.button.next@href',
-  props: {
-    url: '.hdrlnk@href',
-    title: '.hdrlnk',
-    price: '.l2 > .price',
-    lastUpdated: 'time@title'
+// Parameters
+var host = 'http://sfbay.craigslist.org';
+var searchUrl = host + '/search/rrr?sort=rel&query=something';
+var postUrl = host + '/sby/for/5182969996.html';
+var searchScope = '.row';
+var nextSearchPage = '.button.next@href';
+var searchProps = {
+  lastUpdated: 'time@title',
+  location: '.pnr small',
+  postUrl: '.hdrlnk@href',
+  price: '.l2 > .price',
+  title: '.hdrlnk'
+};
+var postProps = {
+  body: '#postingbody',
+  title: 'title',
+  images: ['#thumbs a@href'],
+  location: {
+    region: '.postingtitletext small',
+    lat: '#map@data-latitude',
+    lon: '#map@data-longitude'
+  },
+  price: '.price',
+  contact: x('#replylink@href', {
+    name: '.reply_options ul > li',
+    phone: '.replytellink@href',
+    email: '.anonemail'
+  })
+};
+
+// A map of dirty fields to their cleaning functions
+var dirtyFields = {
+  body: trim,
+  contact: {
+    name: validateName,
+    phone: cleanNumber
+  },
+  location: {
+    region: removeParens
   }
 };
-// get an array of all links
-// x(url, ['.hdrlnk@href'])(log);
 
-// get an array of all titles
-// x(url, ['.hdrlnk'])(log);
-
-// get an array of all price tags
-// x(url, ['.l2 > .price'])(debug);
-
-// get an array of all timestamps
-// x(url, ['time@title'])(log);
-
-// get a collection of objects with
-// props included in the third parameter
-// that's way too easy!
-// x(url, selectors.scope, [selectors.props])
-// .paginate(selectors.nextPage)
-// .limit(2)(log)
-
-function log(err, content) {
-  if (err) {
-    console.log(err);
-  }
-  console.log('content.length =', content.length);
+function log(stuff) {
+  console.log(stuff);
+  return stuff;
 }
 
-function debug(err, content) {
-  debugger;
-}
+// Paginated search tool
+function search(searchUrl) {
+  var pages = arguments.length <= 1 || arguments[1] === undefined ? 1 : arguments[1];
 
-function handleError(err) {
-  console.log(err);
-}
-
-var properties = ['url', 'title', 'price', 'lastUpdated'];
-
-// selectors correspond to properties by index
-// const selectors = [
-//   ['.hdrlnk@href'],
-//   ['.hdrlnk'],
-//   ['.l2 > .price'],
-//   ['time@title'],
-// ];
-
-/* convert array 
-
-[
-  'http://craigslist.org',
-  'Super sports car',
-  3000, 
-  '5:00am on a Thursday'
-]
-
-into 
-
-{
- url: 'http:craigslist',
- title: 'Super sports car',
- pricetag: 30, 
- timestamp: '5:00am' 
-}
-
-*/
-
-// returns an array of post objects with proper keys corresponding to each prop
-function addPropertyLabels(posts) {
-  return posts.map(function (post) {
-    return _lodash2['default'].zipObject(properties, post);
-  });
-}
-
-// zips search results into an array of post arrays
-// each post array contains all properties in the properties array
-function zip(searchResults) {
-  return _lodash2['default'].zip.apply(_lodash2['default'], _toConsumableArray(searchResults));
-}
-
-// takes a craigslist searchUrl and returns an array of unlinked search results
-function getSearchResults(searchUrl) {
-  return Promise.all(selectors.map(function (selector) {
-    return scrape(searchUrl, selector);
-  }));
-}
-
-// promisify x-ray
-function scrape(url, scope, selector) {
   return new Promise(function (resolve, reject) {
-    x(url, scope, selector).paginate(selectors.nextPage).limit(2)(function (err, content) {
+    x(searchUrl, searchScope, [searchProps]).paginate(nextSearchPage).limit(pages)(function (err, results) {
       if (err) reject(err);
-      resolve(content);
+      resolve(results);
     });
   });
 }
 
-// TODO: write a generateUrl function that takes an obj of params and turns it into a craigslist url
+// Get post details from a valid craigslist post url
+// TODO: add error handling for urls that have been taken down
+function getPost(postUrl) {
+  return new Promise(function (resolve, reject) {
+    x(postUrl, postProps)(function (err, post) {
+      console.log(post);
+      if (err) reject(err);
+      resolve(post);
+    });
+  });
+}
 
-// function search(url) {
-//   return getSearchResults(url)
-//     .then(zip)
-//     .then(addPropertyLabels)
-//     // .then(debug)
-//     .catch(handleError)
-// }
+function cleanPost(post) {
+  var nest = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
 
-// search(url)
-//   .then((url) => {
-//     console.log(url)
-//   });
+  var map = dirtyFields;
+  if (nest.length) {
+    map = _lodash2['default'].reduce(nest, function (memo, key) {
+      return map[key];
+    }, map);
+  }
+  _lodash2['default'].forEach(post, function (content, field, post) {
+    if (content instanceof Object && !Array.isArray(content)) {
+      post = cleanPost(content, nest.concat(field));
+    } else if (field in map) {
+      post[field] = map[field](content);
+    }
+  });
+  return post;
+}
 
-// function search (url) {
-//   return new Promise(function(resolve, reject) {
-//     resolve(x(url, scope, propsToSelectorsMap)
-//     .paginate('.button.next@href')
-//     .limit(2))
-//   })
-// }
+/* CLEANING FUNCTIONS */
+function validateName(str) {
+  return (/^[A-z ]+$/.test(str) ? str : null
+  );
+}
 
-// se
+function removeParens(str) {
+  return str.replace(/[()]/g, '').trim();
+}
+
+function cleanNumber(str) {
+  return str.split(':')[1];
+}
+
+function trim(str) {
+  return str.trim();
+}
+
+// generator function controls the flow of all async logic by using appropriate async functions
+// NOTE: for current state of babel generator functions need to be established using function expressions
+// grabs the first post details from a search result
+// REMEMBER: yield async expressions
+var imFeelingLucky = regeneratorRuntime.mark(function imFeelingLucky(searchUrl) {
+  var searchResults, firstPostUrl, post, cleaned;
+  return regeneratorRuntime.wrap(function imFeelingLucky$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.next = 2;
+        return search(searchUrl);
+
+      case 2:
+        searchResults = context$1$0.sent;
+        firstPostUrl = searchResults[0].postUrl;
+        context$1$0.next = 6;
+        return getPost(firstPostUrl);
+
+      case 6:
+        post = context$1$0.sent;
+
+        console.log(post);
+        cleaned = cleanPost(post);
+        return context$1$0.abrupt('return', cleaned);
+
+      case 10:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, imFeelingLucky, this);
+});
+
+// wrapper function to run a generator function which yields promises to completion
+// TODO: implement error handling
+function runGenerator(g, cb) {
+  var it = g(),
+      ret = undefined;
+  // asynchronously iterate over generator
+  (function iterate(val) {
+    ret = it.next(val);
+    if (!ret.done) {
+      // poor man's "is it a promise?" test
+      if ("then" in ret.value) {
+        // wait on the promise
+        ret.value.then(iterate);
+        // immediate value: just send right back in
+      } else {
+          // avoid synchronous recursion
+          setTimeout(function () {
+            iterate(ret.value);
+          }, 0);
+        }
+      // when finished invoke the callback with generator's return value
+    } else {
+        if (cb) cb(ret.value);
+      }
+  })();
+}
+
+// kick off the imFeelingLucky chain of events
+runGenerator(imFeelingLucky.bind(null, searchUrl), log);
