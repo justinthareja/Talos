@@ -2,6 +2,8 @@
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+require('babel/polyfill');
+
 var _spooky = require('spooky');
 
 var _spooky2 = _interopRequireDefault(_spooky);
@@ -10,12 +12,17 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var searchUrl = 'http://sfbay.craigslist.org/search/sss?query=acura+mdx';
+var params = {
+  host: 'http://sfbay.craigslist.org',
+  path: '/search/sss?query=acura+mdx',
+  userAgent: 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1'
+};
 
 // kick it off
-search(searchUrl);
+search(params);
 
-function search(searchUrl) {
+function search($scope) {
+  var searchUrl = $scope.host + $scope.path;
   var spooky = new _spooky2['default']({
     casper: {
       logLevel: 'debug',
@@ -28,22 +35,8 @@ function search(searchUrl) {
       throw e;
     }
     spooky.start(searchUrl);
-    spooky.then(function () {
-      var host = 'http://sfbay.craigslist.org';
-      var results = {};
-      results.timestamp = this.getElementsAttribute('time', 'title');
-      results.postUrl = this.getElementsAttribute('.hdrlnk', 'href').map(function (path) {
-        return host + path;
-      });
-      results.title = this.evaluate(function () {
-        var nodes = document.querySelectorAll('.hdrlnk');
-        return [].map.call(nodes, function (node) {
-          return node.text;
-        });
-      });
-
-      this.emit('search complete', results);
-    });
+    spooky.userAgent($scope.userAgent);
+    spooky.then([$scope, getResults]);
     spooky.run();
   });
   /******NODE LISTENERS******/
@@ -52,10 +45,6 @@ function search(searchUrl) {
     if (stack) {
       console.log(stack);
     }
-  });
-
-  spooky.on('hello', function (greeting) {
-    console.log(greeting);
   });
 
   spooky.on('console', function (line) {
@@ -69,15 +58,17 @@ function search(searchUrl) {
   });
 
   spooky.on('search complete', function (results) {
-    console.log(zip(results));
+    console.log('search complete here ya go:', results);
+  });
+
+  spooky.on('remote.message', function (msg) {
+    console.log('remote message caught: ' + msg);
+  });
+
+  spooky.on('page.error', function (msg, trace) {
+    console.log('ERROR: ' + msg);
   });
 }
-
-var results = {
-  title: ['fat black dildo', 'game cube'],
-  timestamp: ['8am', '1:00pm'],
-  postUrl: ['http://word.com', 'http://chill.com']
-};
 
 function zip(resultsObj) {
   var len = Math.max.apply(null, _lodash2['default'].map(resultsObj, function (field) {
@@ -91,4 +82,51 @@ function zip(resultsObj) {
   }, []);
 }
 
+function getResults() {
+  var $$scope = arguments.length;
+  console.log(JSON.stringify($$scope));
+  var results = this.evaluate(function () {
+    var $scope = arguments[0];
+    // console.log(arguments);
+    // console.log(JSON.stringify(params))
+    // let host = 'http://sfbay.craigslist.org'
+    // let rowNodes = document.querySelectorAll('.content .row');
+    // let rowList = [].slice.call(rowNodes);
+    // // let rowList = [...rowNodes];
+    // return rowList.reduce(function(list, row) {
+    //   let price = null;
+    //   if(row.getElementsByClassName('price')[0]) {
+    //     price = row.getElementsByClassName('price')[0].innerText
+    //   }
+    //   list.push({
+    //       price: price,
+    //       title: row.getElementsByClassName('hdrlnk')[0].innerText,
+    //       postUrl: host + row.getElementsByClassName('hdrlnk')[0].getAttribute('href'),
+    //       timestamp: row.getElementsByTagName('time')[0].getAttribute('title')
+    //   });
+    //   return list;
+    // }, []);
+  }, {
+    host: host
+  });
+
+  this.emit('search complete', results);
+}
+
+/* or this
+function zip(resultsObj) {
+  let len = Math.max.apply(null, (_.map(resultsObj, field => field.length)));
+  let results = [];
+
+  for (var i = 0; i < len; i++) {
+    let obj = {};
+    for (field in resultsObj) {
+      obj[field] = resultsObj[field];
+    }
+    results.push(obj);
+  }
+
+  return results;
+}
+*/
 /******CASPER FUNCTIONS******/

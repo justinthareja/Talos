@@ -19,7 +19,8 @@ function getPostDetails() {
   let replylink = host + this.getElementAttribute('#replylink', 'href');
   let location = post.location = {};
 
-  post.body = this.fetchText('#postingbody');
+  post.body = this.fetchText('#postingbody')
+                  .map(body => body.trim());
   post.images = this.getElementsAttribute('#thumbs a', 'href');
   post.title = this.fetchText('title');
   post.url = this.getCurrentUrl();

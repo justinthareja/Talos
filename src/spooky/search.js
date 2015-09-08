@@ -1,17 +1,22 @@
+import 'babel/polyfill';
 import Spooky from 'spooky';
 import _ from 'lodash';
 
-let searchUrl = 'http://sfbay.craigslist.org/search/sss?query=acura+mdx';
-
+const params = {
+  host: 'http://sfbay.craigslist.org',
+  path: '/search/sss?query=acura+mdx',
+  userAgent: 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1'
+}
 
 // kick it off
-search(searchUrl);  
+search(params);  
 
-function search(searchUrl) {
+function search($scope) {
+  const searchUrl = $scope.host + $scope.path;
   let spooky = new Spooky({
     casper: {
       logLevel: 'debug', 
-      verbose: true
+      verbose: true,
     }
   }, err => {
     if (err) {
@@ -20,20 +25,8 @@ function search(searchUrl) {
       throw e;
     }
     spooky.start(searchUrl);
-    spooky.then(function() {
-      let host = 'http://sfbay.craigslist.org'
-      let results = {};
-      results.timestamp = this.getElementsAttribute('time', 'title');
-      results.postUrl = this.getElementsAttribute('.hdrlnk', 'href')
-            .map(path => host + path);
-      results.title = this.evaluate(() => {
-        let nodes = document.querySelectorAll('.hdrlnk')
-        return [].map.call(nodes, node => node.text);
-      });
-
-      this.emit('search complete', results);
-
-    });
+    spooky.userAgent($scope.userAgent);
+    spooky.then([$scope, getResults]);
     spooky.run();
   });
   /******NODE LISTENERS******/
@@ -42,10 +35,6 @@ function search(searchUrl) {
     if(stack) {
       console.log(stack);
     }
-  });
-
-  spooky.on('hello', greeting => {
-    console.log(greeting)
   });
 
   spooky.on('console', line => {
@@ -59,9 +48,17 @@ function search(searchUrl) {
   });
 
   spooky.on('search complete', results => {
-    console.log(zip(results));
+    console.log('search complete here ya go:', results)
   })
 
+  spooky.on('remote.message', msg => {
+    console.log('remote message caught: ' + msg);
+  })
+
+  spooky.on( 'page.error', (msg, trace) => {
+    console.log('ERROR: ' + msg);
+  });
+}
 
 function zip(resultsObj) {
   let len = Math.max.apply(null, (_.map(resultsObj, field => field.length)));
@@ -73,6 +70,55 @@ function zip(resultsObj) {
   }, []);
 }
 
+
+function getResults() {
+  let $$scope = arguments.length;
+  console.log(JSON.stringify($$scope));
+  let results = this.evaluate(function() {
+    let $scope = arguments[0];
+    // console.log(arguments);
+    // console.log(JSON.stringify(params))
+    // let host = 'http://sfbay.craigslist.org'
+    // let rowNodes = document.querySelectorAll('.content .row');
+    // let rowList = [].slice.call(rowNodes);
+    // // let rowList = [...rowNodes];
+    // return rowList.reduce(function(list, row) {
+    //   let price = null;
+    //   if(row.getElementsByClassName('price')[0]) {
+    //     price = row.getElementsByClassName('price')[0].innerText 
+    //   } 
+    //   list.push({
+    //       price: price,
+    //       title: row.getElementsByClassName('hdrlnk')[0].innerText,
+    //       postUrl: host + row.getElementsByClassName('hdrlnk')[0].getAttribute('href'),
+    //       timestamp: row.getElementsByTagName('time')[0].getAttribute('title')
+    //   });
+    //   return list;
+    // }, []);
+  }, {
+    host: host,
+  });
+  
+  this.emit('search complete', results);
+
+}
+
+/* or this
+function zip(resultsObj) {
+  let len = Math.max.apply(null, (_.map(resultsObj, field => field.length)));
+  let results = [];
+
+  for (var i = 0; i < len; i++) {
+    let obj = {};
+    for (field in resultsObj) {
+      obj[field] = resultsObj[field];
+    }
+    results.push(obj);
+  }
+
+  return results;
+}
+*/
 /******CASPER FUNCTIONS******/
 
 
