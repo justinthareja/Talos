@@ -17,83 +17,82 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var params = {
-  host: 'http://sfbay.craigslist.org',
-  path: '/sby/cto/5205352863.html',
-  userAgent: 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1'
-};
+var userAgent = 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1';
 
 // Serialized helper functions
 var helpers = {
   name: serialize(nameExists)
 };
 
-// Kick it off
-getPost(_lodash2['default'].extend(params, helpers));
+function getPost(params) {
+  var $scope = _lodash2['default'].extend(params, helpers);
 
-function getPost($scope) {
-  var _this = this;
+  return new Promise(function (resolve, reject) {
+    var _this = this;
 
-  var postUrl = $scope.host + $scope.path;
-  var spooky = new _spooky2['default']({
-    casper: {
-      logLevel: 'debug',
-      verbose: true
-    }
-  }, function (err) {
-    if (err) {
-      e = new Error('Failed to initialize SpookyJS');
-      e.details = err;
-      throw e;
-    }
-    spooky.start(postUrl);
-    spooky.userAgent($scope.userAgent);
-    // .then accepts a function twople:
-    // twople[0] = global variables from the node ctx to be passed into casper contex
-    // twople[1] = function invoked during appropriate step in the .then chain
-    spooky.then([$scope, checkPostExists]); // Ejects returning post = null
-    spooky.then([$scope, getPostDetails]);
-    spooky.then([$scope, checkCaptcha]); // Ejects with no contact = null
-    spooky.then([$scope, getContactDetails]);
-    spooky.then([$scope, returnPost]);
-    spooky.run();
-  });
+    var postUrl = $scope.host + $scope.path;
 
-  /******NODE LISTENERS******/
-  spooky.on('navigation.requested', function (url, navigationType, navigationLocked, isMainFrame) {
-    console.log('––––––––––Navigation Requested–––––––––', 'navtype', navigationType);
-  });
+    var spooky = new _spooky2['default']({
+      casper: {
+        logLevel: 'debug',
+        verbose: true
+      }
+    }, function (err) {
+      if (err) {
+        e = new Error('Failed to initialize SpookyJS');
+        e.details = err;
+        throw e;
+      }
+      spooky.start(postUrl);
+      spooky.userAgent(userAgent);
+      // .then accepts a function twople:
+      // twople[0] = global variables from the node ctx to be passed into casper contex
+      // twople[1] = function invoked during appropriate step in the .then chain
+      spooky.then([$scope, checkPostExists]); // Ejects returning post = null
+      spooky.then([$scope, getPostDetails]);
+      spooky.then([$scope, checkCaptcha]); // Ejects with no contact = null
+      spooky.then([$scope, getContactDetails]);
+      spooky.then([$scope, returnPost]);
+      spooky.run();
+    });
 
-  spooky.on('error', function (e, stack) {
-    console.error(e);
-    if (stack) {
-      console.log(stack);
-    }
-  });
+    /******NODE LISTENERS******/
+    spooky.on('navigation.requested', function (url, navigationType, navigationLocked, isMainFrame) {
+      console.log('––––––––––Navigation Requested–––––––––', 'navtype', navigationType);
+    });
 
-  spooky.on('console', function (line) {
-    console.log(line);
-  });
+    spooky.on('error', function (e, stack) {
+      reject(e);
+      if (stack) {
+        console.log(stack);
+      }
+    });
 
-  spooky.on('log', function (log) {
-    if (log.space === 'remote') {
-      console.log(log.message.replace(/ \- .*/, ''));
-    }
-  });
+    spooky.on('console', function (line) {
+      console.log(line);
+    });
 
-  spooky.on('got post', function (post) {
-    // This is where the post object will live
-    console.log('post received in node context', post);
-  });
+    spooky.on('log', function (log) {
+      if (log.space === 'remote') {
+        console.log(log.message.replace(/ \- .*/, ''));
+      }
+    });
 
-  spooky.on('remote.message', function (msg) {
-    _this.log('remote message caught: ' + msg, 'info');
-    console.log('remote message caught: ' + msg);
-  });
+    spooky.on('got post', function (post) {
+      // This is where the post object will live
+      resolve(post);
+      console.log('post received in node context', post);
+    });
 
-  spooky.on('page.error', function (msg, trace) {
-    console.log('Error: ' + msg);
-    _this.log('Error: ' + msg, 'ERROR');
+    spooky.on('remote.message', function (msg) {
+      _this.log('remote message caught: ' + msg, 'info');
+      console.log('remote message caught: ' + msg);
+    });
+
+    spooky.on('page.error', function (msg, trace) {
+      console.log('Error: ' + msg);
+      _this.log('Error: ' + msg, 'ERROR');
+    });
   });
 }
 
@@ -101,7 +100,7 @@ function getPost($scope) {
 function getPostDetails() {
   // TODO: FILTER DUPLICATES
   // Create the post object accumulator as a casper global
-  window.post = {};
+  var post = window.post = {};
 
   // Add main page attributes (if they exist);
   window.post.body = this.fetchText('#postingbody');
@@ -123,8 +122,9 @@ function getPostDetails() {
 
 function getContactDetails() {
   // Still has access to window.post defined in previous step
-  var nameExists = new Function(name.body).bind(this);
   var contact = window.post.contact = {};
+  // Re-build helper function once in Casper context
+  var nameExists = new Function(name.body).bind(this);
 
   contact.name = nameExists() ? this.getElementInfo('.reply_options li').text : null;
   contact.email = this.fetchText('.anonemail');

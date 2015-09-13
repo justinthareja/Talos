@@ -17,9 +17,12 @@
     "gulp-watch": "^4.3.5"
   },
   "dependencies": {
+    "body-parser": "^1.13.3",
     "casperjs": "^1.1.0-beta3",
+    "express": "^4.13.3",
     "lodash": "^3.10.1",
     "phantomjs": "^1.9.18",
+    "url-parse": "^1.0.2",
     "x-ray": "^2.0.2"
   }
 }

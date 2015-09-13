@@ -5,7 +5,7 @@ import plumber from 'gulp-plumber';
 import gutil from 'gulp-util';
 
 var paths = { 
-  scripts: ['src/**/*.js','spec/**/*.js']
+  scripts: ['server/**/*.js','spec/**/*.js']
 }
 
 gulp.task('babel', () => {
@@ -15,7 +15,7 @@ gulp.task('babel', () => {
     .on('error', (err) => {
       gutil.log(gutil.colors.red('Error transpiling to ES5'), err.stack);
     })
-    .pipe(gulp.dest(['dist', 'dist/spec']));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('watch', () => {

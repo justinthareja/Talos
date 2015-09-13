@@ -46,7 +46,7 @@ path right before ?
     resumes: 'rrr',
     services: 'sss'
   }
-
+[].slice.call(document.querySelectorAll('.cats .txt')).map(function(el){return el.innerText}).forEach(function(el) {console.log(el)})
 
 search craigslist
 acquire email address
