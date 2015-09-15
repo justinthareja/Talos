@@ -2,9 +2,14 @@ import 'babel/polyfill';
 import Spooky from 'spooky';
 import _ from 'lodash';
 import fs from 'fs';
+import Promise from 'bluebird';
+
+var write = Promise.promisify(fs.writeFile);
+var read = Promise.promisify(fs.read);
 
 const sitesUrl = "http://www.craigslist.org/about/sites";
 const userAgent = 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1';
+const writePath = '/Users/homestead/Dropbox/Code/talos/server/json/siteMap.json';
 
 
 let spooky = new Spooky({
@@ -43,8 +48,7 @@ let spooky = new Spooky({
                 .map(r => r[0].toUpperCase() + r.slice(1))
                 .join(' ')
                 .split('-')
-                .join(' ')
-                // .toLowerCase()
+                .join(' ');
               let siteAddress = site.getAttribute('href')
                 .split('//')[1]
                 .split('.')[0];
@@ -82,8 +86,9 @@ let spooky = new Spooky({
   });
 
   spooky.on('scrape complete', regionMap => {
-    fs.writeFile('/Users/homestead/Dropbox/Code/talos/server/json/siteMap.json', JSON.stringify(regionMap), function (err, success) {
-      console.log('---SUCCESSFULLY WROTE REGION DATA---');
+    console.log('scrape complete')
+    fs.writeFile(writePath, JSON.stringify(regionMap), (err, data) => {
+      console.log('~~~SUCCESSFULLY WRITTEN~~~ ');
     });
   });
 
@@ -94,3 +99,4 @@ let spooky = new Spooky({
   spooky.on('page.error', (msg, trace) => {
     console.log('Error: ' + msg);
   });    
+

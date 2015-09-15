@@ -17,6 +17,7 @@
     "gulp-watch": "^4.3.5"
   },
   "dependencies": {
+    "bluebird": "^2.10.0",
     "body-parser": "^1.13.3",
     "casperjs": "^1.1.0-beta3",
     "express": "^4.13.3",

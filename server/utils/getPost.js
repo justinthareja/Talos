@@ -7,7 +7,7 @@ const userAgent = 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like G
 // Serialized helper functions
 let helpers = {
   name: serialize(nameExists)
-} ;
+};
 
 export function getPost(params) {
   let $scope = _.extend(params, helpers);

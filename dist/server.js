@@ -46,8 +46,7 @@ app.param('category', function (req, res, next, category) {
 });
 
 function sendResults(req, res, next) {
-  var options = (0, _utilsQueryBuilderJs.getSearchParams)(req.body);
-  (0, _utilsSearchJs.search)(options).then(function (results) {
+  (0, _utilsQueryBuilderJs.getSearchParams)(req.body).then(_utilsSearchJs.search).then(function (results) {
     res.json(results);
   });
 };

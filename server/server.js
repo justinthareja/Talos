@@ -31,10 +31,11 @@ app.param('category', function(req, res, next, category) {
 })
   
 function sendResults (req, res, next) {
-  let options = getSearchParams(req.body);
-  search(options).then(results => {
+  getSearchParams(req.body)
+    .then(search)
+    .then(results => {
       res.json(results);
-  });
+    });
 };
 
 function sendPost(req, res, next) {
