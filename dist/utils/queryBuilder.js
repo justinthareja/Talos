@@ -21,7 +21,6 @@ var _bluebird = require('bluebird');
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
 var readFile = _bluebird2['default'].promisify(_fs2['default'].readFile);
-var siteMap = '/Users/homestead/Dropbox/Code/talos/server/json/siteMap.json';
 
 function getPostParams(post) {
   var url = new _urlParse2['default'](post.url);
@@ -32,16 +31,41 @@ function getPostParams(post) {
 }
 
 function getSearchParams(search) {
-  return readFile(siteMap, 'utf-8').then(function (data) {
-    var map = JSON.parse(data);
+  return parseSite(search).then(parseBoard).then(function (params) {
+    return {
+      host: 'http://' + params.region + '.craigslist.org',
+      path: params.board + '?query=' + params.query
+    };
+  });
+}
+
+function parseSite(search) {
+  var siteMap = '/Users/homestead/Dropbox/Code/talos/server/json/siteMap.json';
+  return readFile(siteMap, 'utf-8').then(function (sites) {
+    var map = JSON.parse(sites);
     var zone = search.zone;
     var territory = search.territory;
     var site = search.site;
-    var region = map[zone][territory][site];
 
-    return {
-      host: 'http://' + region + '.craigslist.org',
-      path: '/search/' + search.category + '?query=' + search.query
-    };
+    search.region = map[zone][territory][site];
+
+    return search;
+  });
+}
+
+function parseBoard(search) {
+  var categoryMap = '/Users/homestead/Dropbox/Code/talos/server/json/categoryMap.json';
+  return readFile(categoryMap, 'utf-8').then(function (categories) {
+    var map = JSON.parse(categories);
+    var subcategory = search.subcategory;
+    var category = search.category;
+
+    if (subcategory === null) {
+      search.board = map[category]['path'];
+    } else {
+      search.board = map[category]['subcategories'][subcategory];
+    }
+
+    return search;
   });
 }

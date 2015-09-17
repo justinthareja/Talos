@@ -25,11 +25,11 @@ export function search($scope) {
     });
     
     /******NODE LISTENERS******/
-    spooky.on('error', (e, stack) => {
-      console.error(e);
-      if(stack) {
-        console.log(stack);
-      }
+    spooky.on('error', (err, stack) => {
+      reject({
+        error: err,
+        stack: stack
+      });
     });
 
     spooky.on('console', line => {
@@ -44,15 +44,18 @@ export function search($scope) {
 
     spooky.on('search complete', results => {
       console.log('Search complete!');
-      resolve(results);
+      results.length === 0 ? reject('NO RESULTS FOUND') : resolve(results);
     });
 
     spooky.on('remote.message', msg => {
       console.log('remote message caught: ' + msg);
     });
 
-    spooky.on( 'page.error', (msg, trace) => {
-      console.log('ERROR: ' + msg);
+    spooky.on('page.error', (err, stack) => {
+      reject({
+        error: err,
+        stack: stack
+      });
     });
   });
 }
@@ -81,7 +84,7 @@ function getResults() {
   }, { 
     host: host
   });
-
+  
   this.emit('search complete', results);
 }
 

@@ -23,9 +23,9 @@ var _bluebird2 = _interopRequireDefault(_bluebird);
 var write = _bluebird2['default'].promisify(_fs2['default'].writeFile);
 var read = _bluebird2['default'].promisify(_fs2['default'].read);
 
-var sitesUrl = "http://www.craigslist.org/about/sites";
+var sitesUrl = "http://sfbay.craigslist.org/";
 var userAgent = 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1';
-var writePath = '/Users/homestead/Dropbox/Code/talos/server/json/siteMap.json';
+var writePath = '/Users/homestead/Dropbox/Code/talos/server/json/categoryMap.json';
 
 var spooky = new _spooky2['default']({
   casper: {
@@ -41,34 +41,48 @@ var spooky = new _spooky2['default']({
   spooky.start(sitesUrl);
   spooky.userAgent(userAgent);
   spooky.then(function () {
-    var regionMap = this.evaluate(function () {
-      var map = {};
-      var regions = [].slice.call(document.querySelectorAll('h1'));
-      var regionData = document.querySelectorAll('.colmask');
-      regions.forEach(function (region, i) {
-        var regionName = region.innerText;
-        var obj = map[regionName] = {};
-        var currentRegionData = regionData[i];
-        var stateHeaders = [].slice.call(currentRegionData.getElementsByTagName('h4'));
-        var stateData = currentRegionData.getElementsByTagName('ul');
-        stateHeaders.forEach(function (stateHeader, i) {
-          var h = stateHeader.innerText;
-          var innerObj = obj[h] = {};
-          var currentListOfSites = [].slice.call(stateData[i].getElementsByTagName('a'));
-          currentListOfSites.forEach(function (site) {
-            var siteName = site.innerText.replace(/\/|\(|\)|\./g, '').split(' ').filter(function (r) {
-              return r.length > 0;
-            }).map(function (r) {
-              return r[0].toUpperCase() + r.slice(1);
-            }).join(' ').split('-').join(' ');
-            var siteAddress = site.getAttribute('href').split('//')[1].split('.')[0];
-            innerObj[siteName] = siteAddress;
-          });
-        });
+    var categories = this.evaluate(function () {
+
+      var results = {};
+      var headers = [].slice.call(document.querySelectorAll('.ban a'));
+
+      headers.forEach(function (header) {
+        var isForum = header.getAttribute('href').split('/').length !== 3;
+        var subcategories = [].slice.call(header.parentElement.nextElementSibling.querySelectorAll('a'));
+        var headerName = header.querySelector('.txt').innerText;
+        var headerPath = header.getAttribute('href');
+
+        // skip the discussion forums and resume categories
+        if (isForum) {
+          return;
+        }
+
+        if (headerName === 'resumes') {
+          return;
+        }
+
+        var category = results[headerName] = {};
+        category['path'] = headerPath;
+        category['subcategories'] = subcategories.reduce(function (memo, subcategory) {
+          var subName = subcategory.querySelector('.txt').innerText
+          // some string normalizing
+          .replace(/\+/g, ' and ').split('/').map(function (el) {
+            return el.trim();
+          }).join('-').replace(/\[|\]/g, '').trim();
+
+          var subPath = subcategory.getAttribute('class');
+          var subPaths = subPath.split(' ');
+          if (subPaths.length > 1) {
+            subPath = subPaths[0];
+          }
+
+          memo[subName] = '/search/' + subPath;
+          return memo;
+        }, {});
       });
-      return map;
+      return results;
     });
-    this.emit('scrape complete', regionMap);
+    this.emit('scrape complete', categories);
   });
   spooky.run();
 });
@@ -95,9 +109,9 @@ spooky.on('log', function (log) {
   }
 });
 
-spooky.on('scrape complete', function (siteMap) {
+spooky.on('scrape complete', function (categoryMap) {
   console.log('scrape complete');
-  _fs2['default'].writeFile(writePath, JSON.stringify(siteMap, null, 2), function (err, data) {
+  _fs2['default'].writeFile(writePath, JSON.stringify(categoryMap, null, 2), function (err, data) {
     console.log('~~~SUCCESSFULLY WRITTEN~~~ ');
   });
 });

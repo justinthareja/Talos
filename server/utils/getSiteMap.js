@@ -85,9 +85,9 @@ let spooky = new Spooky({
     }
   });
 
-  spooky.on('scrape complete', regionMap => {
+  spooky.on('scrape complete', siteMap => {
     console.log('scrape complete')
-    fs.writeFile(writePath, JSON.stringify(regionMap), (err, data) => {
+    fs.writeFile(writePath, JSON.stringify(siteMap, null, 2), (err, data) => {
       console.log('~~~SUCCESSFULLY WRITTEN~~~ ');
     });
   });

@@ -40,11 +40,11 @@ function search($scope) {
     });
 
     /******NODE LISTENERS******/
-    spooky.on('error', function (e, stack) {
-      console.error(e);
-      if (stack) {
-        console.log(stack);
-      }
+    spooky.on('error', function (err, stack) {
+      reject({
+        error: err,
+        stack: stack
+      });
     });
 
     spooky.on('console', function (line) {
@@ -59,15 +59,18 @@ function search($scope) {
 
     spooky.on('search complete', function (results) {
       console.log('Search complete!');
-      resolve(results);
+      results.length === 0 ? reject('NO RESULTS FOUND') : resolve(results);
     });
 
     spooky.on('remote.message', function (msg) {
       console.log('remote message caught: ' + msg);
     });
 
-    spooky.on('page.error', function (msg, trace) {
-      console.log('ERROR: ' + msg);
+    spooky.on('page.error', function (err, stack) {
+      reject({
+        error: err,
+        stack: stack
+      });
     });
   });
 }

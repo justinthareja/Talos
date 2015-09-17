@@ -1,1 +1,1010 @@
-{"Africa":{"Egypt":{"Egypt":"cairo"},"Ethiopia":{"Ethiopia":"addisababa"},"Ghana":{"Ghana":"accra"},"Kenya":{"Kenya":"kenya"},"Morocco":{"Morocco":"casablanca"},"South Africa":{"Cape Town":"capetown","Durban":"durban","Johannesburg":"johannesburg","Pretoria":"pretoria"},"Tunisia":{"Tunisia":"tunis"}},"Asia, Pacific and Middle East":{"Bangladesh":{"Bangladesh":"bangladesh"},"China":{"Beijing":"beijing","Chengdu":"chengdu","Chongqing":"chongqing","Dalian":"dalian","Guangzhou":"guangzhou","Hangzhou":"hangzhou","Nanjing":"nanjing","Shanghai":"shanghai","Shenyang":"shenyang","Shenzhen":"shenzhen","Wuhan":"wuhan","Xi'an":"xian"},"Guam / Micronesia":{"Guam micronesia":"micronesia"},"Hong Kong":{"Hong Kong":"hongkong"},"India":{"Ahmedabad":"ahmedabad","Bangalore":"bangalore","Bhubaneswar":"bhubaneswar","Chandigarh":"chandigarh","Chennai Madras":"chennai","Delhi":"delhi","Goa":"goa","Hyderabad":"hyderabad","Indore":"indore","Jaipur":"jaipur","Kerala":"kerala","Kolkata Calcutta":"kolkata","Lucknow":"lucknow","Mumbai":"mumbai","Pune":"pune","Surat Surat":"surat"},"Indonesia":{"Indonesia":"jakarta"},"Iran":{"Iran":"tehran"},"Iraq":{"Iraq":"baghdad"},"Israel and Palestine":{"Haifa":"haifa","Jerusalem":"jerusalem","Tel Aviv":"telaviv","West Bank":"ramallah"},"Japan":{"Fukuoka":"fukuoka","Hiroshima":"hiroshima","Nagoya":"nagoya","Okinawa":"okinawa","Osaka kobe kyoto":"osaka","Sapporo":"sapporo","Sendai":"sendai","Tokyo":"tokyo"},"Korea":{"Seoul":"seoul"},"Kuwait":{"Kuwait":"kuwait"},"Lebanon":{"Beirut, Lebanon":"beirut"},"Malaysia":{"Malaysia":"malaysia"},"Pakistan":{"Pakistan":"pakistan"},"Philippines":{"Bacolod":"bacolod","Bicol Region":"naga","Cagayan De Oro":"cdo","Cebu":"cebu","Davao City":"davaocity","Iloilo":"iloilo","Manila":"manila","Pampanga":"pampanga","Zamboanga":"zamboanga"},"Singapore":{"Singapore":"singapore"},"Taiwan":{"Taiwan":"taipei"},"Thailand":{"Thailand":"bangkok"},"United Arab Emirates":{"United Arab Emirates":"dubai"},"Vietnam":{"Vietnam":"vietnam"}},"Canada":{"Alberta":{"Calgary":"calgary","Edmonton":"edmonton","Ft Mcmurray":"ftmcmurray","Lethbridge":"lethbridge","Medicine Hat":"hat","Peace River Country":"peace","Red Deer":"reddeer"},"British Columbia":{"Cariboo":"cariboo","Comox Valley":"comoxvalley","Fraser Valley":"abbotsford","Kamloops":"kamloops","Kelowna Okanagan":"kelowna","Kootenays":"cranbrook","Nanaimo":"nanaimo","Prince George":"princegeorge","Skeena bulkley":"skeena","Sunshine Coast":"sunshine","Vancouver":"vancouver","Victoria":"victoria","Whistler":"whistler"},"Manitoba":{"Winnipeg":"winnipeg"},"New Brunswick":{"New Brunswick":"newbrunswick"},"Newfoundland and Labrador":{"St John's":"newfoundland"},"Northwest Territories":{"Territories":"territories","Yellowknife":"yellowknife"},"Nova Scotia":{"Halifax":"halifax"},"Ontario":{"Barrie":"barrie","Belleville":"belleville","Brantford woodstock":"brantford","Chatham kent":"chatham","Cornwall":"cornwall","Guelph":"guelph","Hamilton burlington":"hamilton","Kingston":"kingston","Kitchener waterloo cambridge":"kitchener","London":"londonon","Niagara Region":"niagara","Ottawa hull gatineau":"ottawa","Owen Sound":"owensound","Peterborough":"peterborough","Sarnia":"sarnia","Sault Ste Marie":"soo","Sudbury":"sudbury","Thunder Bay":"thunderbay","Toronto":"toronto","Windsor":"windsor"},"Prince Edward Island":{"Prince Edward Island":"pei"},"Quebec":{"Montreal":"montreal","Quebec City":"quebec","Saguenay":"saguenay","Sherbrooke":"sherbrooke","Trois rivieres":"troisrivieres"},"Saskatchewan":{"Regina":"regina","Saskatoon":"saskatoon"},"Yukon Territory":{"Whitehorse":"whitehorse"}},"Europe":{"Austria":{"Vienna":"vienna"},"Belgium":{"Belgium":"brussels"},"Bulgaria":{"Bulgaria":"bulgaria"},"Croatia":{"Croatia":"zagreb"},"Czech Republic":{"Prague":"prague"},"Denmark":{"Copenhagen":"copenhagen"},"Finland":{"Finland":"helsinki"},"France":{"Bordeaux":"bordeaux","Brittany":"rennes","Grenoble":"grenoble","Lille":"lille","Loire Valley":"loire","Lyon":"lyon","Marseille":"marseilles","Montpellier":"montpellier","Nice Cote D'azur":"cotedazur","Normandy":"rouen","Paris":"paris","Strasbourg":"strasbourg","Toulouse":"toulouse"},"Germany":{"Berlin":"berlin","Bremen":"bremen","Cologne":"cologne","Dresden":"dresden","Dusseldorf":"dusseldorf","Essen Ruhr":"essen","Frankfurt":"frankfurt","Hamburg":"hamburg","Hannover":"hannover","Heidelberg":"heidelberg","Kaiserslautern":"kaiserslautern","Leipzig":"leipzig","Munich":"munich","Nuremberg":"nuremberg","Stuttgart":"stuttgart"},"Greece":{"Greece":"athens"},"Hungary":{"Budapest":"budapest"},"Iceland":{"Reykjavik":"reykjavik"},"Ireland":{"Dublin":"dublin"},"Italy":{"Bologna":"bologna","Florence Tuscany":"florence","Genoa":"genoa","Milan":"milan","Napoli Campania":"naples","Perugia":"perugia","Rome":"rome","Sardinia":"sardinia","Sicilia":"sicily","Torino":"torino","Venice Veneto":"venice"},"Luxembourg":{"Luxembourg":"luxembourg"},"Netherlands":{"Amsterdam Randstad":"amsterdam"},"Norway":{"Norway":"oslo"},"Poland":{"Poland":"warsaw"},"Portugal":{"Faro Algarve":"faro","Lisbon":"lisbon","Porto":"porto"},"Romania":{"Romania":"bucharest"},"Russian Federation":{"Moscow":"moscow","St Petersburg":"stpetersburg"},"Spain":{"Alicante":"alicante","Baleares":"baleares","Barcelona":"barcelona","Bilbao":"bilbao","Cadiz":"cadiz","Canarias":"canarias","Granada":"granada","Madrid":"madrid","Malaga":"malaga","Sevilla":"sevilla","Valencia":"valencia"},"Sweden":{"Sweden":"stockholm"},"Switzerland":{"Basel":"basel","Bern":"bern","Geneva":"geneva","Lausanne":"lausanne","Zurich":"zurich"},"Turkey":{"Turkey":"istanbul"},"Ukraine":{"Ukraine":"ukraine"},"United Kingdom":{"Aberdeen":"aberdeen","Bath":"bath","Belfast":"belfast","Birmingham West Mids":"birmingham","Brighton":"brighton","Bristol":"bristol","Cambridge, UK":"cambridge","Cardiff Wales":"cardiff","Coventry":"coventry","Derby":"derby","Devon & Cornwall":"devon","Dundee":"dundee","East Anglia":"norwich","East Midlands":"eastmids","Edinburgh":"edinburgh","Essex":"essex","Glasgow":"glasgow","Hampshire":"hampshire","Kent":"kent","Leeds":"leeds","Liverpool":"liverpool","London":"london","Manchester":"manchester","Newcastle NE England":"newcastle","Nottingham":"nottingham","Oxford":"oxford","Sheffield":"sheffield"}},"Latin America and Caribbean":{"Argentina":{"Buenos Aires":"buenosaires"},"Bolivia":{"Bolivia":"lapaz"},"Brazil":{"Belo Horizonte":"belohorizonte","Brasilia":"brasilia","Curitiba":"curitiba","Fortaleza":"fortaleza","Porto Alegre":"portoalegre","Recife":"recife","Rio De Janeiro":"rio","Salvador, Bahia":"salvador","Sao Paulo":"saopaulo"},"Caribbean Islands":{"Caribbean Islands":"caribbean"},"Chile":{"Chile":"santiago"},"Colombia":{"Colombia":"colombia"},"Costa Rica":{"Costa Rica":"costarica"},"Dominican Republic":{"Dominican Republic":"santodomingo"},"Ecuador":{"Ecuador":"quito"},"El Salvador":{"El Salvador":"elsalvador"},"Guatemala":{"Guatemala":"guatemala"},"Mexico":{"Acapulco":"acapulco","Baja California Sur":"bajasur","Chihuahua":"chihuahua","Ciudad Juarez":"juarez","Guadalajara":"guadalajara","Guanajuato":"guanajuato","Hermosillo":"hermosillo","Mazatlan":"mazatlan","Mexico City":"mexicocity","Monterrey":"monterrey","Oaxaca":"oaxaca","Puebla":"puebla","Puerto Vallarta":"pv","Tijuana":"tijuana","Veracruz":"veracruz","Yucatan":"yucatan"},"Nicaragua":{"Nicaragua":"managua"},"Panama":{"Panama":"panama"},"Peru":{"Peru":"lima"},"Puerto Rico":{"Puerto Rico":"puertorico"},"Uruguay":{"Montevideo":"montevideo"},"Venezuela":{"Venezuela":"caracas"},"Virgin Islands, U.S.":{"Virgin Islands":"virgin"}},"Oceania":{"Australia":{"Adelaide":"adelaide","Brisbane":"brisbane","Cairns":"cairns","Canberra":"canberra","Darwin":"darwin","Gold Coast":"goldcoast","Melbourne":"melbourne","Newcastle, NSW":"ntl","Perth":"perth","Sydney":"sydney","Tasmania":"hobart","Wollongong":"wollongong"},"New Zealand":{"Auckland":"auckland","Christchurch":"christchurch","Dunedin":"dunedin","Wellington":"wellington"}},"US":{"Alabama":{"Auburn":"auburn","Birmingham":"bham","Dothan":"dothan","Florence Muscle Shoals":"shoals","Gadsden anniston":"gadsden","Huntsville Decatur":"huntsville","Mobile":"mobile","Montgomery":"montgomery","Tuscaloosa":"tuscaloosa"},"Alaska":{"Anchorage Mat su":"anchorage","Fairbanks":"fairbanks","Kenai Peninsula":"kenai","Southeast Alaska":"juneau"},"Arizona":{"Flagstaff Sedona":"flagstaff","Mohave County":"mohave","Phoenix":"phoenix","Prescott":"prescott","Show Low":"showlow","Sierra Vista":"sierravista","Tucson":"tucson","Yuma":"yuma"},"Arkansas":{"Fayetteville":"fayar","Fort Smith":"fortsmith","Jonesboro":"jonesboro","Little Rock":"littlerock","Texarkana":"texarkana"},"California":{"Bakersfield":"bakersfield","Chico":"chico","Fresno Madera":"fresno","Gold Country":"goldcountry","Hanford corcoran":"hanford","Humboldt County":"humboldt","Imperial County":"imperial","Inland Empire":"inlandempire","Los Angeles":"losangeles","Mendocino County":"mendocino","Merced":"merced","Modesto":"modesto","Monterey Bay":"monterey","Orange County":"orangecounty","Palm Springs":"palmsprings","Redding":"redding","Sacramento":"sacramento","San Diego":"sandiego","San Francisco Bay Area":"sfbay","San Luis Obispo":"slo","Santa Barbara":"santabarbara","Santa Maria":"santamaria","Siskiyou County":"siskiyou","Stockton":"stockton","Susanville":"susanville","Ventura County":"ventura","Visalia tulare":"visalia","Yuba sutter":"yubasutter"},"Colorado":{"Boulder":"boulder","Colorado Springs":"cosprings","Denver":"denver","Eastern CO":"eastco","Fort Collins North CO":"fortcollins","High Rockies":"rockies","Pueblo":"pueblo","Western Slope":"westslope"},"Connecticut":{"Eastern CT":"newlondon","Hartford":"hartford","New Haven":"newhaven","Northwest CT":"nwct"},"Delaware":{"Delaware":"delaware"},"District of Columbia":{"Washington":"washingtondc"},"Florida":{"Broward County":"miami","Daytona Beach":"daytona","Florida Keys":"keys","Fort Lauderdale":"fortlauderdale","Ft Myers SW Florida":"fortmyers","Gainesville":"gainesville","Heartland Florida":"cfl","Jacksonville":"jacksonville","Lakeland":"lakeland","Miami Dade":"miami","North Central FL":"lakecity","Ocala":"ocala","Okaloosa Walton":"okaloosa","Orlando":"orlando","Palm Beach County":"miami","Panama City":"panamacity","Pensacola":"pensacola","Sarasota bradenton":"sarasota","South Florida":"miami","Space Coast":"spacecoast","St Augustine":"staugustine","Tallahassee":"tallahassee","Tampa Bay Area":"tampa","Treasure Coast":"treasure"},"Georgia":{"Albany":"albanyga","Athens":"athensga","Atlanta":"atlanta","Augusta":"augusta","Brunswick":"brunswick","Columbus":"columbusga","Macon Warner Robins":"macon","Northwest GA":"nwga","Savannah Hinesville":"savannah","Statesboro":"statesboro","Valdosta":"valdosta"},"Hawaii":{"Hawaii":"honolulu"},"Idaho":{"Boise":"boise","East Idaho":"eastidaho","Lewiston Clarkston":"lewiston","Twin Falls":"twinfalls"},"Illinois":{"Bloomington normal":"bn","Champaign Urbana":"chambana","Chicago":"chicago","Decatur":"decatur","La Salle Co":"lasalle","Mattoon charleston":"mattoon","Peoria":"peoria","Rockford":"rockford","Southern Illinois":"carbondale","Springfield":"springfieldil","Western IL":"quincy"},"Indiana":{"Bloomington":"bloomington","Evansville":"evansville","Fort Wayne":"fortwayne","Indianapolis":"indianapolis","Kokomo":"kokomo","Lafayette West Lafayette":"tippecanoe","Muncie Anderson":"muncie","Richmond":"richmondin","South Bend Michiana":"southbend","Terre Haute":"terrehaute"},"Iowa":{"Ames":"ames","Cedar Rapids":"cedarrapids","Des Moines":"desmoines","Dubuque":"dubuque","Fort Dodge":"fortdodge","Iowa City":"iowacity","Mason City":"masoncity","Quad Cities":"quadcities","Sioux City":"siouxcity","Southeast IA":"ottumwa","Waterloo Cedar Falls":"waterloo"},"Kansas":{"Lawrence":"lawrence","Manhattan":"ksu","Northwest KS":"nwks","Salina":"salina","Southeast KS":"seks","Southwest KS":"swks","Topeka":"topeka","Wichita":"wichita"},"Kentucky":{"Bowling Green":"bgky","Eastern Kentucky":"eastky","Lexington":"lexington","Louisville":"louisville","Owensboro":"owensboro","Western KY":"westky"},"Louisiana":{"Baton Rouge":"batonrouge","Central Louisiana":"cenla","Houma":"houma","Lafayette":"lafayette","Lake Charles":"lakecharles","Monroe":"monroe","New Orleans":"neworleans","Shreveport":"shreveport"},"Maine":{"Maine":"maine"},"Maryland":{"Annapolis":"annapolis","Baltimore":"baltimore","Eastern Shore":"easternshore","Frederick":"frederick","Southern Maryland":"smd","Western Maryland":"westmd"},"Massachusetts":{"Boston":"boston","Cape Cod Islands":"capecod","South Coast":"southcoast","Western Massachusetts":"westernmass","Worcester Central MA":"worcester"},"Michigan":{"Ann Arbor":"annarbor","Battle Creek":"battlecreek","Central Michigan":"centralmich","Detroit Metro":"detroit","Flint":"flint","Grand Rapids":"grandrapids","Holland":"holland","Jackson":"jxn","Kalamazoo":"kalamazoo","Lansing":"lansing","Monroe":"monroemi","Muskegon":"muskegon","Northern Michigan":"nmi","Port Huron":"porthuron","Saginaw midland baycity":"saginaw","Southwest Michigan":"swmi","The Thumb":"thumb","Upper Peninsula":"up"},"Minnesota":{"Bemidji":"bemidji","Brainerd":"brainerd","Duluth Superior":"duluth","Mankato":"mankato","Minneapolis St Paul":"minneapolis","Rochester":"rmn","Southwest MN":"marshall","St Cloud":"stcloud"},"Mississippi":{"Gulfport Biloxi":"gulfport","Hattiesburg":"hattiesburg","Jackson":"jackson","Meridian":"meridian","North Mississippi":"northmiss","Southwest MS":"natchez"},"Missouri":{"Columbia Jeff City":"columbiamo","Joplin":"joplin","Kansas City":"kansascity","Kirksville":"kirksville","Lake Of The Ozarks":"loz","Southeast Missouri":"semo","Springfield":"springfield","St Joseph":"stjoseph","St Louis":"stlouis"},"Montana":{"Billings":"billings","Bozeman":"bozeman","Butte":"butte","Eastern Montana":"montana","Great Falls":"greatfalls","Helena":"helena","Kalispell":"kalispell","Missoula":"missoula"},"Nebraska":{"Grand Island":"grandisland","Lincoln":"lincoln","North Platte":"northplatte","Omaha Council Bluffs":"omaha","Scottsbluff Panhandle":"scottsbluff"},"Nevada":{"Elko":"elko","Las Vegas":"lasvegas","Reno Tahoe":"reno"},"New Hampshire":{"New Hampshire":"nh"},"New Jersey":{"Central NJ":"cnj","Jersey Shore":"jerseyshore","North Jersey":"newjersey","South Jersey":"southjersey"},"New Mexico":{"Albuquerque":"albuquerque","Clovis Portales":"clovis","Farmington":"farmington","Las Cruces":"lascruces","Roswell Carlsbad":"roswell","Santa Fe Taos":"santafe"},"New York":{"Albany":"albany","Binghamton":"binghamton","Buffalo":"buffalo","Catskills":"catskills","Chautauqua":"chautauqua","Elmira corning":"elmira","Finger Lakes":"fingerlakes","Glens Falls":"glensfalls","Hudson Valley":"hudsonvalley","Ithaca":"ithaca","Long Island":"longisland","New York City":"newyork","Oneonta":"oneonta","Plattsburgh adirondacks":"plattsburgh","Potsdam canton massena":"potsdam","Rochester":"rochester","Syracuse":"syracuse","Twin Tiers NYPA":"twintiers","Utica rome oneida":"utica","Watertown":"watertown"},"North Carolina":{"Asheville":"asheville","Boone":"boone","Charlotte":"charlotte","Eastern NC":"eastnc","Fayetteville":"fayetteville","Greensboro":"greensboro","Hickory Lenoir":"hickory","Jacksonville":"onslow","Outer Banks":"outerbanks","Raleigh Durham CH":"raleigh","Wilmington":"wilmington","Winston salem":"winstonsalem"},"North Dakota":{"Bismarck":"bismarck","Fargo Moorhead":"fargo","Grand Forks":"grandforks","North Dakota":"nd"},"Ohio":{"Akron Canton":"akroncanton","Ashtabula":"ashtabula","Athens":"athensohio","Chillicothe":"chillicothe","Cincinnati":"cincinnati","Cleveland":"cleveland","Columbus":"columbus","Dayton Springfield":"dayton","Lima Findlay":"limaohio","Mansfield":"mansfield","Sandusky":"sandusky","Toledo":"toledo","Tuscarawas Co":"tuscarawas","Youngstown":"youngstown","Zanesville Cambridge":"zanesville"},"Oklahoma":{"Lawton":"lawton","Northwest OK":"enid","Oklahoma City":"oklahomacity","Stillwater":"stillwater","Tulsa":"tulsa"},"Oregon":{"Bend":"bend","Corvallisalbany":"corvallis","East Oregon":"eastoregon","Eugene":"eugene","Klamath Falls":"klamath","Medford ashland":"medford","Oregon Coast":"oregoncoast","Portland":"portland","Roseburg":"roseburg","Salem":"salem"},"Pennsylvania":{"Altoona johnstown":"altoona","Cumberland Valley":"chambersburg","Erie":"erie","Harrisburg":"harrisburg","Lancaster":"lancaster","Lehigh Valley":"allentown","Meadville":"meadville","Philadelphia":"philadelphia","Pittsburgh":"pittsburgh","Poconos":"poconos","Reading":"reading","Scranton Wilkes barre":"scranton","State College":"pennstate","Williamsport":"williamsport","York":"york"},"Rhode Island":{"Rhode Island":"providence"},"South Carolina":{"Charleston":"charleston","Columbia":"columbia","Florence":"florencesc","Greenville Upstate":"greenville","Hilton Head":"hiltonhead","Myrtle Beach":"myrtlebeach"},"South Dakota":{"Northeast SD":"nesd","Pierre Central SD":"csd","Rapid City West SD":"rapidcity","Sioux Falls SE SD":"siouxfalls","South Dakota":"sd"},"Tennessee":{"Chattanooga":"chattanooga","Clarksville":"clarksville","Cookeville":"cookeville","Jackson":"jacksontn","Knoxville":"knoxville","Memphis":"memphis","Nashville":"nashville","Tri cities":"tricities"},"Territories":{"Guam micronesia":"micronesia","Puerto Rico":"puertorico","US Virgin Islands":"virgin"},"Texas":{"Abilene":"abilene","Amarillo":"amarillo","Austin":"austin","Beaumont Port Arthur":"beaumont","Brownsville":"brownsville","College Station":"collegestation","Corpus Christi":"corpuschristi","Dallas Fort Worth":"dallas","Deep East Texas":"nacogdoches","Del Rio Eagle Pass":"delrio","El Paso":"elpaso","Galveston":"galveston","Houston":"houston","Killeen Temple Ft Hood":"killeen","Laredo":"laredo","Lubbock":"lubbock","Mcallen Edinburg":"mcallen","Odessa Midland":"odessa","San Angelo":"sanangelo","San Antonio":"sanantonio","San Marcos":"sanmarcos","Southwest TX":"bigbend","Texoma":"texoma","Tyler East TX":"easttexas","Victoria":"victoriatx","Waco":"waco","Wichita Falls":"wichitafalls"},"Utah":{"Logan":"logan","Ogden clearfield":"ogden","Provo Orem":"provo","Salt Lake City":"saltlakecity","St George":"stgeorge"},"Vermont":{"Vermont":"burlington"},"Virginia":{"Charlottesville":"charlottesville","Danville":"danville","Fredericksburg":"fredericksburg","Hampton Roads":"norfolk","Harrisonburg":"harrisonburg","Lynchburg":"lynchburg","New River Valley":"blacksburg","Richmond":"richmond","Roanoke":"roanoke","Southwest VA":"swva","Winchester":"winchester"},"Washington":{"Bellingham":"bellingham","Kennewick pasco richland":"kpr","Moses Lake":"moseslake","Olympic Peninsula":"olympic","Pullman Moscow":"pullman","Seattle tacoma":"seattle","Skagit Island SJI":"skagit","Spokane Coeur D'alene":"spokane","Wenatchee":"wenatchee","Yakima":"yakima"},"West Virginia":{"Charleston":"charlestonwv","Eastern Panhandle":"martinsburg","Huntington ashland":"huntington","Morgantown":"morgantown","Northern Panhandle":"wheeling","Parkersburg marietta":"parkersburg","Southern WV":"swv","West Virginia Old":"wv"},"Wisconsin":{"Appleton oshkosh FDL":"appleton","Eau Claire":"eauclaire","Green Bay":"greenbay","Janesville":"janesville","Kenosha racine":"racine","La Crosse":"lacrosse","Madison":"madison","Milwaukee":"milwaukee","Northern WI":"northernwi","Sheboygan":"sheboygan","Wausau":"wausau"},"Wyoming":{"Wyoming":"wyoming"}}}
+{
+  "Africa": {
+    "Egypt": {
+      "Egypt": "cairo"
+    },
+    "Ethiopia": {
+      "Ethiopia": "addisababa"
+    },
+    "Ghana": {
+      "Ghana": "accra"
+    },
+    "Kenya": {
+      "Kenya": "kenya"
+    },
+    "Morocco": {
+      "Morocco": "casablanca"
+    },
+    "South Africa": {
+      "Cape Town": "capetown",
+      "Durban": "durban",
+      "Johannesburg": "johannesburg",
+      "Pretoria": "pretoria"
+    },
+    "Tunisia": {
+      "Tunisia": "tunis"
+    }
+  },
+  "Asia, Pacific and Middle East": {
+    "Bangladesh": {
+      "Bangladesh": "bangladesh"
+    },
+    "China": {
+      "Beijing": "beijing",
+      "Chengdu": "chengdu",
+      "Chongqing": "chongqing",
+      "Dalian": "dalian",
+      "Guangzhou": "guangzhou",
+      "Hangzhou": "hangzhou",
+      "Nanjing": "nanjing",
+      "Shanghai": "shanghai",
+      "Shenyang": "shenyang",
+      "Shenzhen": "shenzhen",
+      "Wuhan": "wuhan",
+      "Xi'an": "xian"
+    },
+    "Guam / Micronesia": {
+      "Guam micronesia": "micronesia"
+    },
+    "Hong Kong": {
+      "Hong Kong": "hongkong"
+    },
+    "India": {
+      "Ahmedabad": "ahmedabad",
+      "Bangalore": "bangalore",
+      "Bhubaneswar": "bhubaneswar",
+      "Chandigarh": "chandigarh",
+      "Chennai Madras": "chennai",
+      "Delhi": "delhi",
+      "Goa": "goa",
+      "Hyderabad": "hyderabad",
+      "Indore": "indore",
+      "Jaipur": "jaipur",
+      "Kerala": "kerala",
+      "Kolkata Calcutta": "kolkata",
+      "Lucknow": "lucknow",
+      "Mumbai": "mumbai",
+      "Pune": "pune",
+      "Surat Surat": "surat"
+    },
+    "Indonesia": {
+      "Indonesia": "jakarta"
+    },
+    "Iran": {
+      "Iran": "tehran"
+    },
+    "Iraq": {
+      "Iraq": "baghdad"
+    },
+    "Israel and Palestine": {
+      "Haifa": "haifa",
+      "Jerusalem": "jerusalem",
+      "Tel Aviv": "telaviv",
+      "West Bank": "ramallah"
+    },
+    "Japan": {
+      "Fukuoka": "fukuoka",
+      "Hiroshima": "hiroshima",
+      "Nagoya": "nagoya",
+      "Okinawa": "okinawa",
+      "Osaka kobe kyoto": "osaka",
+      "Sapporo": "sapporo",
+      "Sendai": "sendai",
+      "Tokyo": "tokyo"
+    },
+    "Korea": {
+      "Seoul": "seoul"
+    },
+    "Kuwait": {
+      "Kuwait": "kuwait"
+    },
+    "Lebanon": {
+      "Beirut, Lebanon": "beirut"
+    },
+    "Malaysia": {
+      "Malaysia": "malaysia"
+    },
+    "Pakistan": {
+      "Pakistan": "pakistan"
+    },
+    "Philippines": {
+      "Bacolod": "bacolod",
+      "Bicol Region": "naga",
+      "Cagayan De Oro": "cdo",
+      "Cebu": "cebu",
+      "Davao City": "davaocity",
+      "Iloilo": "iloilo",
+      "Manila": "manila",
+      "Pampanga": "pampanga",
+      "Zamboanga": "zamboanga"
+    },
+    "Singapore": {
+      "Singapore": "singapore"
+    },
+    "Taiwan": {
+      "Taiwan": "taipei"
+    },
+    "Thailand": {
+      "Thailand": "bangkok"
+    },
+    "United Arab Emirates": {
+      "United Arab Emirates": "dubai"
+    },
+    "Vietnam": {
+      "Vietnam": "vietnam"
+    }
+  },
+  "Canada": {
+    "Alberta": {
+      "Calgary": "calgary",
+      "Edmonton": "edmonton",
+      "Ft Mcmurray": "ftmcmurray",
+      "Lethbridge": "lethbridge",
+      "Medicine Hat": "hat",
+      "Peace River Country": "peace",
+      "Red Deer": "reddeer"
+    },
+    "British Columbia": {
+      "Cariboo": "cariboo",
+      "Comox Valley": "comoxvalley",
+      "Fraser Valley": "abbotsford",
+      "Kamloops": "kamloops",
+      "Kelowna Okanagan": "kelowna",
+      "Kootenays": "cranbrook",
+      "Nanaimo": "nanaimo",
+      "Prince George": "princegeorge",
+      "Skeena bulkley": "skeena",
+      "Sunshine Coast": "sunshine",
+      "Vancouver": "vancouver",
+      "Victoria": "victoria",
+      "Whistler": "whistler"
+    },
+    "Manitoba": {
+      "Winnipeg": "winnipeg"
+    },
+    "New Brunswick": {
+      "New Brunswick": "newbrunswick"
+    },
+    "Newfoundland and Labrador": {
+      "St John's": "newfoundland"
+    },
+    "Northwest Territories": {
+      "Territories": "territories",
+      "Yellowknife": "yellowknife"
+    },
+    "Nova Scotia": {
+      "Halifax": "halifax"
+    },
+    "Ontario": {
+      "Barrie": "barrie",
+      "Belleville": "belleville",
+      "Brantford woodstock": "brantford",
+      "Chatham kent": "chatham",
+      "Cornwall": "cornwall",
+      "Guelph": "guelph",
+      "Hamilton burlington": "hamilton",
+      "Kingston": "kingston",
+      "Kitchener waterloo cambridge": "kitchener",
+      "London": "londonon",
+      "Niagara Region": "niagara",
+      "Ottawa hull gatineau": "ottawa",
+      "Owen Sound": "owensound",
+      "Peterborough": "peterborough",
+      "Sarnia": "sarnia",
+      "Sault Ste Marie": "soo",
+      "Sudbury": "sudbury",
+      "Thunder Bay": "thunderbay",
+      "Toronto": "toronto",
+      "Windsor": "windsor"
+    },
+    "Prince Edward Island": {
+      "Prince Edward Island": "pei"
+    },
+    "Quebec": {
+      "Montreal": "montreal",
+      "Quebec City": "quebec",
+      "Saguenay": "saguenay",
+      "Sherbrooke": "sherbrooke",
+      "Trois rivieres": "troisrivieres"
+    },
+    "Saskatchewan": {
+      "Regina": "regina",
+      "Saskatoon": "saskatoon"
+    },
+    "Yukon Territory": {
+      "Whitehorse": "whitehorse"
+    }
+  },
+  "Europe": {
+    "Austria": {
+      "Vienna": "vienna"
+    },
+    "Belgium": {
+      "Belgium": "brussels"
+    },
+    "Bulgaria": {
+      "Bulgaria": "bulgaria"
+    },
+    "Croatia": {
+      "Croatia": "zagreb"
+    },
+    "Czech Republic": {
+      "Prague": "prague"
+    },
+    "Denmark": {
+      "Copenhagen": "copenhagen"
+    },
+    "Finland": {
+      "Finland": "helsinki"
+    },
+    "France": {
+      "Bordeaux": "bordeaux",
+      "Brittany": "rennes",
+      "Grenoble": "grenoble",
+      "Lille": "lille",
+      "Loire Valley": "loire",
+      "Lyon": "lyon",
+      "Marseille": "marseilles",
+      "Montpellier": "montpellier",
+      "Nice Cote D'azur": "cotedazur",
+      "Normandy": "rouen",
+      "Paris": "paris",
+      "Strasbourg": "strasbourg",
+      "Toulouse": "toulouse"
+    },
+    "Germany": {
+      "Berlin": "berlin",
+      "Bremen": "bremen",
+      "Cologne": "cologne",
+      "Dresden": "dresden",
+      "Dusseldorf": "dusseldorf",
+      "Essen Ruhr": "essen",
+      "Frankfurt": "frankfurt",
+      "Hamburg": "hamburg",
+      "Hannover": "hannover",
+      "Heidelberg": "heidelberg",
+      "Kaiserslautern": "kaiserslautern",
+      "Leipzig": "leipzig",
+      "Munich": "munich",
+      "Nuremberg": "nuremberg",
+      "Stuttgart": "stuttgart"
+    },
+    "Greece": {
+      "Greece": "athens"
+    },
+    "Hungary": {
+      "Budapest": "budapest"
+    },
+    "Iceland": {
+      "Reykjavik": "reykjavik"
+    },
+    "Ireland": {
+      "Dublin": "dublin"
+    },
+    "Italy": {
+      "Bologna": "bologna",
+      "Florence Tuscany": "florence",
+      "Genoa": "genoa",
+      "Milan": "milan",
+      "Napoli Campania": "naples",
+      "Perugia": "perugia",
+      "Rome": "rome",
+      "Sardinia": "sardinia",
+      "Sicilia": "sicily",
+      "Torino": "torino",
+      "Venice Veneto": "venice"
+    },
+    "Luxembourg": {
+      "Luxembourg": "luxembourg"
+    },
+    "Netherlands": {
+      "Amsterdam Randstad": "amsterdam"
+    },
+    "Norway": {
+      "Norway": "oslo"
+    },
+    "Poland": {
+      "Poland": "warsaw"
+    },
+    "Portugal": {
+      "Faro Algarve": "faro",
+      "Lisbon": "lisbon",
+      "Porto": "porto"
+    },
+    "Romania": {
+      "Romania": "bucharest"
+    },
+    "Russian Federation": {
+      "Moscow": "moscow",
+      "St Petersburg": "stpetersburg"
+    },
+    "Spain": {
+      "Alicante": "alicante",
+      "Baleares": "baleares",
+      "Barcelona": "barcelona",
+      "Bilbao": "bilbao",
+      "Cadiz": "cadiz",
+      "Canarias": "canarias",
+      "Granada": "granada",
+      "Madrid": "madrid",
+      "Malaga": "malaga",
+      "Sevilla": "sevilla",
+      "Valencia": "valencia"
+    },
+    "Sweden": {
+      "Sweden": "stockholm"
+    },
+    "Switzerland": {
+      "Basel": "basel",
+      "Bern": "bern",
+      "Geneva": "geneva",
+      "Lausanne": "lausanne",
+      "Zurich": "zurich"
+    },
+    "Turkey": {
+      "Turkey": "istanbul"
+    },
+    "Ukraine": {
+      "Ukraine": "ukraine"
+    },
+    "United Kingdom": {
+      "Aberdeen": "aberdeen",
+      "Bath": "bath",
+      "Belfast": "belfast",
+      "Birmingham West Mids": "birmingham",
+      "Brighton": "brighton",
+      "Bristol": "bristol",
+      "Cambridge, UK": "cambridge",
+      "Cardiff Wales": "cardiff",
+      "Coventry": "coventry",
+      "Derby": "derby",
+      "Devon & Cornwall": "devon",
+      "Dundee": "dundee",
+      "East Anglia": "norwich",
+      "East Midlands": "eastmids",
+      "Edinburgh": "edinburgh",
+      "Essex": "essex",
+      "Glasgow": "glasgow",
+      "Hampshire": "hampshire",
+      "Kent": "kent",
+      "Leeds": "leeds",
+      "Liverpool": "liverpool",
+      "London": "london",
+      "Manchester": "manchester",
+      "Newcastle NE England": "newcastle",
+      "Nottingham": "nottingham",
+      "Oxford": "oxford",
+      "Sheffield": "sheffield"
+    }
+  },
+  "Latin America and Caribbean": {
+    "Argentina": {
+      "Buenos Aires": "buenosaires"
+    },
+    "Bolivia": {
+      "Bolivia": "lapaz"
+    },
+    "Brazil": {
+      "Belo Horizonte": "belohorizonte",
+      "Brasilia": "brasilia",
+      "Curitiba": "curitiba",
+      "Fortaleza": "fortaleza",
+      "Porto Alegre": "portoalegre",
+      "Recife": "recife",
+      "Rio De Janeiro": "rio",
+      "Salvador, Bahia": "salvador",
+      "Sao Paulo": "saopaulo"
+    },
+    "Caribbean Islands": {
+      "Caribbean Islands": "caribbean"
+    },
+    "Chile": {
+      "Chile": "santiago"
+    },
+    "Colombia": {
+      "Colombia": "colombia"
+    },
+    "Costa Rica": {
+      "Costa Rica": "costarica"
+    },
+    "Dominican Republic": {
+      "Dominican Republic": "santodomingo"
+    },
+    "Ecuador": {
+      "Ecuador": "quito"
+    },
+    "El Salvador": {
+      "El Salvador": "elsalvador"
+    },
+    "Guatemala": {
+      "Guatemala": "guatemala"
+    },
+    "Mexico": {
+      "Acapulco": "acapulco",
+      "Baja California Sur": "bajasur",
+      "Chihuahua": "chihuahua",
+      "Ciudad Juarez": "juarez",
+      "Guadalajara": "guadalajara",
+      "Guanajuato": "guanajuato",
+      "Hermosillo": "hermosillo",
+      "Mazatlan": "mazatlan",
+      "Mexico City": "mexicocity",
+      "Monterrey": "monterrey",
+      "Oaxaca": "oaxaca",
+      "Puebla": "puebla",
+      "Puerto Vallarta": "pv",
+      "Tijuana": "tijuana",
+      "Veracruz": "veracruz",
+      "Yucatan": "yucatan"
+    },
+    "Nicaragua": {
+      "Nicaragua": "managua"
+    },
+    "Panama": {
+      "Panama": "panama"
+    },
+    "Peru": {
+      "Peru": "lima"
+    },
+    "Puerto Rico": {
+      "Puerto Rico": "puertorico"
+    },
+    "Uruguay": {
+      "Montevideo": "montevideo"
+    },
+    "Venezuela": {
+      "Venezuela": "caracas"
+    },
+    "Virgin Islands, U.S.": {
+      "Virgin Islands": "virgin"
+    }
+  },
+  "Oceania": {
+    "Australia": {
+      "Adelaide": "adelaide",
+      "Brisbane": "brisbane",
+      "Cairns": "cairns",
+      "Canberra": "canberra",
+      "Darwin": "darwin",
+      "Gold Coast": "goldcoast",
+      "Melbourne": "melbourne",
+      "Newcastle, NSW": "ntl",
+      "Perth": "perth",
+      "Sydney": "sydney",
+      "Tasmania": "hobart",
+      "Wollongong": "wollongong"
+    },
+    "New Zealand": {
+      "Auckland": "auckland",
+      "Christchurch": "christchurch",
+      "Dunedin": "dunedin",
+      "Wellington": "wellington"
+    }
+  },
+  "US": {
+    "Alabama": {
+      "Auburn": "auburn",
+      "Birmingham": "bham",
+      "Dothan": "dothan",
+      "Florence Muscle Shoals": "shoals",
+      "Gadsden anniston": "gadsden",
+      "Huntsville Decatur": "huntsville",
+      "Mobile": "mobile",
+      "Montgomery": "montgomery",
+      "Tuscaloosa": "tuscaloosa"
+    },
+    "Alaska": {
+      "Anchorage Mat su": "anchorage",
+      "Fairbanks": "fairbanks",
+      "Kenai Peninsula": "kenai",
+      "Southeast Alaska": "juneau"
+    },
+    "Arizona": {
+      "Flagstaff Sedona": "flagstaff",
+      "Mohave County": "mohave",
+      "Phoenix": "phoenix",
+      "Prescott": "prescott",
+      "Show Low": "showlow",
+      "Sierra Vista": "sierravista",
+      "Tucson": "tucson",
+      "Yuma": "yuma"
+    },
+    "Arkansas": {
+      "Fayetteville": "fayar",
+      "Fort Smith": "fortsmith",
+      "Jonesboro": "jonesboro",
+      "Little Rock": "littlerock",
+      "Texarkana": "texarkana"
+    },
+    "California": {
+      "Bakersfield": "bakersfield",
+      "Chico": "chico",
+      "Fresno Madera": "fresno",
+      "Gold Country": "goldcountry",
+      "Hanford corcoran": "hanford",
+      "Humboldt County": "humboldt",
+      "Imperial County": "imperial",
+      "Inland Empire": "inlandempire",
+      "Los Angeles": "losangeles",
+      "Mendocino County": "mendocino",
+      "Merced": "merced",
+      "Modesto": "modesto",
+      "Monterey Bay": "monterey",
+      "Orange County": "orangecounty",
+      "Palm Springs": "palmsprings",
+      "Redding": "redding",
+      "Sacramento": "sacramento",
+      "San Diego": "sandiego",
+      "San Francisco Bay Area": "sfbay",
+      "San Luis Obispo": "slo",
+      "Santa Barbara": "santabarbara",
+      "Santa Maria": "santamaria",
+      "Siskiyou County": "siskiyou",
+      "Stockton": "stockton",
+      "Susanville": "susanville",
+      "Ventura County": "ventura",
+      "Visalia tulare": "visalia",
+      "Yuba sutter": "yubasutter"
+    },
+    "Colorado": {
+      "Boulder": "boulder",
+      "Colorado Springs": "cosprings",
+      "Denver": "denver",
+      "Eastern CO": "eastco",
+      "Fort Collins North CO": "fortcollins",
+      "High Rockies": "rockies",
+      "Pueblo": "pueblo",
+      "Western Slope": "westslope"
+    },
+    "Connecticut": {
+      "Eastern CT": "newlondon",
+      "Hartford": "hartford",
+      "New Haven": "newhaven",
+      "Northwest CT": "nwct"
+    },
+    "Delaware": {
+      "Delaware": "delaware"
+    },
+    "District of Columbia": {
+      "Washington": "washingtondc"
+    },
+    "Florida": {
+      "Broward County": "miami",
+      "Daytona Beach": "daytona",
+      "Florida Keys": "keys",
+      "Fort Lauderdale": "fortlauderdale",
+      "Ft Myers SW Florida": "fortmyers",
+      "Gainesville": "gainesville",
+      "Heartland Florida": "cfl",
+      "Jacksonville": "jacksonville",
+      "Lakeland": "lakeland",
+      "Miami Dade": "miami",
+      "North Central FL": "lakecity",
+      "Ocala": "ocala",
+      "Okaloosa Walton": "okaloosa",
+      "Orlando": "orlando",
+      "Palm Beach County": "miami",
+      "Panama City": "panamacity",
+      "Pensacola": "pensacola",
+      "Sarasota bradenton": "sarasota",
+      "South Florida": "miami",
+      "Space Coast": "spacecoast",
+      "St Augustine": "staugustine",
+      "Tallahassee": "tallahassee",
+      "Tampa Bay Area": "tampa",
+      "Treasure Coast": "treasure"
+    },
+    "Georgia": {
+      "Albany": "albanyga",
+      "Athens": "athensga",
+      "Atlanta": "atlanta",
+      "Augusta": "augusta",
+      "Brunswick": "brunswick",
+      "Columbus": "columbusga",
+      "Macon Warner Robins": "macon",
+      "Northwest GA": "nwga",
+      "Savannah Hinesville": "savannah",
+      "Statesboro": "statesboro",
+      "Valdosta": "valdosta"
+    },
+    "Hawaii": {
+      "Hawaii": "honolulu"
+    },
+    "Idaho": {
+      "Boise": "boise",
+      "East Idaho": "eastidaho",
+      "Lewiston Clarkston": "lewiston",
+      "Twin Falls": "twinfalls"
+    },
+    "Illinois": {
+      "Bloomington normal": "bn",
+      "Champaign Urbana": "chambana",
+      "Chicago": "chicago",
+      "Decatur": "decatur",
+      "La Salle Co": "lasalle",
+      "Mattoon charleston": "mattoon",
+      "Peoria": "peoria",
+      "Rockford": "rockford",
+      "Southern Illinois": "carbondale",
+      "Springfield": "springfieldil",
+      "Western IL": "quincy"
+    },
+    "Indiana": {
+      "Bloomington": "bloomington",
+      "Evansville": "evansville",
+      "Fort Wayne": "fortwayne",
+      "Indianapolis": "indianapolis",
+      "Kokomo": "kokomo",
+      "Lafayette West Lafayette": "tippecanoe",
+      "Muncie Anderson": "muncie",
+      "Richmond": "richmondin",
+      "South Bend Michiana": "southbend",
+      "Terre Haute": "terrehaute"
+    },
+    "Iowa": {
+      "Ames": "ames",
+      "Cedar Rapids": "cedarrapids",
+      "Des Moines": "desmoines",
+      "Dubuque": "dubuque",
+      "Fort Dodge": "fortdodge",
+      "Iowa City": "iowacity",
+      "Mason City": "masoncity",
+      "Quad Cities": "quadcities",
+      "Sioux City": "siouxcity",
+      "Southeast IA": "ottumwa",
+      "Waterloo Cedar Falls": "waterloo"
+    },
+    "Kansas": {
+      "Lawrence": "lawrence",
+      "Manhattan": "ksu",
+      "Northwest KS": "nwks",
+      "Salina": "salina",
+      "Southeast KS": "seks",
+      "Southwest KS": "swks",
+      "Topeka": "topeka",
+      "Wichita": "wichita"
+    },
+    "Kentucky": {
+      "Bowling Green": "bgky",
+      "Eastern Kentucky": "eastky",
+      "Lexington": "lexington",
+      "Louisville": "louisville",
+      "Owensboro": "owensboro",
+      "Western KY": "westky"
+    },
+    "Louisiana": {
+      "Baton Rouge": "batonrouge",
+      "Central Louisiana": "cenla",
+      "Houma": "houma",
+      "Lafayette": "lafayette",
+      "Lake Charles": "lakecharles",
+      "Monroe": "monroe",
+      "New Orleans": "neworleans",
+      "Shreveport": "shreveport"
+    },
+    "Maine": {
+      "Maine": "maine"
+    },
+    "Maryland": {
+      "Annapolis": "annapolis",
+      "Baltimore": "baltimore",
+      "Eastern Shore": "easternshore",
+      "Frederick": "frederick",
+      "Southern Maryland": "smd",
+      "Western Maryland": "westmd"
+    },
+    "Massachusetts": {
+      "Boston": "boston",
+      "Cape Cod Islands": "capecod",
+      "South Coast": "southcoast",
+      "Western Massachusetts": "westernmass",
+      "Worcester Central MA": "worcester"
+    },
+    "Michigan": {
+      "Ann Arbor": "annarbor",
+      "Battle Creek": "battlecreek",
+      "Central Michigan": "centralmich",
+      "Detroit Metro": "detroit",
+      "Flint": "flint",
+      "Grand Rapids": "grandrapids",
+      "Holland": "holland",
+      "Jackson": "jxn",
+      "Kalamazoo": "kalamazoo",
+      "Lansing": "lansing",
+      "Monroe": "monroemi",
+      "Muskegon": "muskegon",
+      "Northern Michigan": "nmi",
+      "Port Huron": "porthuron",
+      "Saginaw midland baycity": "saginaw",
+      "Southwest Michigan": "swmi",
+      "The Thumb": "thumb",
+      "Upper Peninsula": "up"
+    },
+    "Minnesota": {
+      "Bemidji": "bemidji",
+      "Brainerd": "brainerd",
+      "Duluth Superior": "duluth",
+      "Mankato": "mankato",
+      "Minneapolis St Paul": "minneapolis",
+      "Rochester": "rmn",
+      "Southwest MN": "marshall",
+      "St Cloud": "stcloud"
+    },
+    "Mississippi": {
+      "Gulfport Biloxi": "gulfport",
+      "Hattiesburg": "hattiesburg",
+      "Jackson": "jackson",
+      "Meridian": "meridian",
+      "North Mississippi": "northmiss",
+      "Southwest MS": "natchez"
+    },
+    "Missouri": {
+      "Columbia Jeff City": "columbiamo",
+      "Joplin": "joplin",
+      "Kansas City": "kansascity",
+      "Kirksville": "kirksville",
+      "Lake Of The Ozarks": "loz",
+      "Southeast Missouri": "semo",
+      "Springfield": "springfield",
+      "St Joseph": "stjoseph",
+      "St Louis": "stlouis"
+    },
+    "Montana": {
+      "Billings": "billings",
+      "Bozeman": "bozeman",
+      "Butte": "butte",
+      "Eastern Montana": "montana",
+      "Great Falls": "greatfalls",
+      "Helena": "helena",
+      "Kalispell": "kalispell",
+      "Missoula": "missoula"
+    },
+    "Nebraska": {
+      "Grand Island": "grandisland",
+      "Lincoln": "lincoln",
+      "North Platte": "northplatte",
+      "Omaha Council Bluffs": "omaha",
+      "Scottsbluff Panhandle": "scottsbluff"
+    },
+    "Nevada": {
+      "Elko": "elko",
+      "Las Vegas": "lasvegas",
+      "Reno Tahoe": "reno"
+    },
+    "New Hampshire": {
+      "New Hampshire": "nh"
+    },
+    "New Jersey": {
+      "Central NJ": "cnj",
+      "Jersey Shore": "jerseyshore",
+      "North Jersey": "newjersey",
+      "South Jersey": "southjersey"
+    },
+    "New Mexico": {
+      "Albuquerque": "albuquerque",
+      "Clovis Portales": "clovis",
+      "Farmington": "farmington",
+      "Las Cruces": "lascruces",
+      "Roswell Carlsbad": "roswell",
+      "Santa Fe Taos": "santafe"
+    },
+    "New York": {
+      "Albany": "albany",
+      "Binghamton": "binghamton",
+      "Buffalo": "buffalo",
+      "Catskills": "catskills",
+      "Chautauqua": "chautauqua",
+      "Elmira corning": "elmira",
+      "Finger Lakes": "fingerlakes",
+      "Glens Falls": "glensfalls",
+      "Hudson Valley": "hudsonvalley",
+      "Ithaca": "ithaca",
+      "Long Island": "longisland",
+      "New York City": "newyork",
+      "Oneonta": "oneonta",
+      "Plattsburgh adirondacks": "plattsburgh",
+      "Potsdam canton massena": "potsdam",
+      "Rochester": "rochester",
+      "Syracuse": "syracuse",
+      "Twin Tiers NYPA": "twintiers",
+      "Utica rome oneida": "utica",
+      "Watertown": "watertown"
+    },
+    "North Carolina": {
+      "Asheville": "asheville",
+      "Boone": "boone",
+      "Charlotte": "charlotte",
+      "Eastern NC": "eastnc",
+      "Fayetteville": "fayetteville",
+      "Greensboro": "greensboro",
+      "Hickory Lenoir": "hickory",
+      "Jacksonville": "onslow",
+      "Outer Banks": "outerbanks",
+      "Raleigh Durham CH": "raleigh",
+      "Wilmington": "wilmington",
+      "Winston salem": "winstonsalem"
+    },
+    "North Dakota": {
+      "Bismarck": "bismarck",
+      "Fargo Moorhead": "fargo",
+      "Grand Forks": "grandforks",
+      "North Dakota": "nd"
+    },
+    "Ohio": {
+      "Akron Canton": "akroncanton",
+      "Ashtabula": "ashtabula",
+      "Athens": "athensohio",
+      "Chillicothe": "chillicothe",
+      "Cincinnati": "cincinnati",
+      "Cleveland": "cleveland",
+      "Columbus": "columbus",
+      "Dayton Springfield": "dayton",
+      "Lima Findlay": "limaohio",
+      "Mansfield": "mansfield",
+      "Sandusky": "sandusky",
+      "Toledo": "toledo",
+      "Tuscarawas Co": "tuscarawas",
+      "Youngstown": "youngstown",
+      "Zanesville Cambridge": "zanesville"
+    },
+    "Oklahoma": {
+      "Lawton": "lawton",
+      "Northwest OK": "enid",
+      "Oklahoma City": "oklahomacity",
+      "Stillwater": "stillwater",
+      "Tulsa": "tulsa"
+    },
+    "Oregon": {
+      "Bend": "bend",
+      "Corvallisalbany": "corvallis",
+      "East Oregon": "eastoregon",
+      "Eugene": "eugene",
+      "Klamath Falls": "klamath",
+      "Medford ashland": "medford",
+      "Oregon Coast": "oregoncoast",
+      "Portland": "portland",
+      "Roseburg": "roseburg",
+      "Salem": "salem"
+    },
+    "Pennsylvania": {
+      "Altoona johnstown": "altoona",
+      "Cumberland Valley": "chambersburg",
+      "Erie": "erie",
+      "Harrisburg": "harrisburg",
+      "Lancaster": "lancaster",
+      "Lehigh Valley": "allentown",
+      "Meadville": "meadville",
+      "Philadelphia": "philadelphia",
+      "Pittsburgh": "pittsburgh",
+      "Poconos": "poconos",
+      "Reading": "reading",
+      "Scranton Wilkes barre": "scranton",
+      "State College": "pennstate",
+      "Williamsport": "williamsport",
+      "York": "york"
+    },
+    "Rhode Island": {
+      "Rhode Island": "providence"
+    },
+    "South Carolina": {
+      "Charleston": "charleston",
+      "Columbia": "columbia",
+      "Florence": "florencesc",
+      "Greenville Upstate": "greenville",
+      "Hilton Head": "hiltonhead",
+      "Myrtle Beach": "myrtlebeach"
+    },
+    "South Dakota": {
+      "Northeast SD": "nesd",
+      "Pierre Central SD": "csd",
+      "Rapid City West SD": "rapidcity",
+      "Sioux Falls SE SD": "siouxfalls",
+      "South Dakota": "sd"
+    },
+    "Tennessee": {
+      "Chattanooga": "chattanooga",
+      "Clarksville": "clarksville",
+      "Cookeville": "cookeville",
+      "Jackson": "jacksontn",
+      "Knoxville": "knoxville",
+      "Memphis": "memphis",
+      "Nashville": "nashville",
+      "Tri cities": "tricities"
+    },
+    "Territories": {
+      "Guam micronesia": "micronesia",
+      "Puerto Rico": "puertorico",
+      "US Virgin Islands": "virgin"
+    },
+    "Texas": {
+      "Abilene": "abilene",
+      "Amarillo": "amarillo",
+      "Austin": "austin",
+      "Beaumont Port Arthur": "beaumont",
+      "Brownsville": "brownsville",
+      "College Station": "collegestation",
+      "Corpus Christi": "corpuschristi",
+      "Dallas Fort Worth": "dallas",
+      "Deep East Texas": "nacogdoches",
+      "Del Rio Eagle Pass": "delrio",
+      "El Paso": "elpaso",
+      "Galveston": "galveston",
+      "Houston": "houston",
+      "Killeen Temple Ft Hood": "killeen",
+      "Laredo": "laredo",
+      "Lubbock": "lubbock",
+      "Mcallen Edinburg": "mcallen",
+      "Odessa Midland": "odessa",
+      "San Angelo": "sanangelo",
+      "San Antonio": "sanantonio",
+      "San Marcos": "sanmarcos",
+      "Southwest TX": "bigbend",
+      "Texoma": "texoma",
+      "Tyler East TX": "easttexas",
+      "Victoria": "victoriatx",
+      "Waco": "waco",
+      "Wichita Falls": "wichitafalls"
+    },
+    "Utah": {
+      "Logan": "logan",
+      "Ogden clearfield": "ogden",
+      "Provo Orem": "provo",
+      "Salt Lake City": "saltlakecity",
+      "St George": "stgeorge"
+    },
+    "Vermont": {
+      "Vermont": "burlington"
+    },
+    "Virginia": {
+      "Charlottesville": "charlottesville",
+      "Danville": "danville",
+      "Fredericksburg": "fredericksburg",
+      "Hampton Roads": "norfolk",
+      "Harrisonburg": "harrisonburg",
+      "Lynchburg": "lynchburg",
+      "New River Valley": "blacksburg",
+      "Richmond": "richmond",
+      "Roanoke": "roanoke",
+      "Southwest VA": "swva",
+      "Winchester": "winchester"
+    },
+    "Washington": {
+      "Bellingham": "bellingham",
+      "Kennewick pasco richland": "kpr",
+      "Moses Lake": "moseslake",
+      "Olympic Peninsula": "olympic",
+      "Pullman Moscow": "pullman",
+      "Seattle tacoma": "seattle",
+      "Skagit Island SJI": "skagit",
+      "Spokane Coeur D'alene": "spokane",
+      "Wenatchee": "wenatchee",
+      "Yakima": "yakima"
+    },
+    "West Virginia": {
+      "Charleston": "charlestonwv",
+      "Eastern Panhandle": "martinsburg",
+      "Huntington ashland": "huntington",
+      "Morgantown": "morgantown",
+      "Northern Panhandle": "wheeling",
+      "Parkersburg marietta": "parkersburg",
+      "Southern WV": "swv",
+      "West Virginia Old": "wv"
+    },
+    "Wisconsin": {
+      "Appleton oshkosh FDL": "appleton",
+      "Eau Claire": "eauclaire",
+      "Green Bay": "greenbay",
+      "Janesville": "janesville",
+      "Kenosha racine": "racine",
+      "La Crosse": "lacrosse",
+      "Madison": "madison",
+      "Milwaukee": "milwaukee",
+      "Northern WI": "northernwi",
+      "Sheboygan": "sheboygan",
+      "Wausau": "wausau"
+    },
+    "Wyoming": {
+      "Wyoming": "wyoming"
+    }
+  }
+}

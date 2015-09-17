@@ -41,8 +41,8 @@ export function getPost(params) {
 
     /******NODE LISTENERS******/
     spooky.on('navigation.requested', function(url, navigationType, navigationLocked, isMainFrame){
-      console.log('––––––––––Navigation Requested–––––––––', 'navtype', navigationType)
-    })
+      console.log('––––––––––Navigation Requested–––––––––', navigationType);
+    });
 
     spooky.on('error', (e, stack) => {
       reject(e);
@@ -62,7 +62,7 @@ export function getPost(params) {
     });
 
     spooky.on('got post', post => {
-      // This is where the post object will live
+      // This is where the post object will live in the node context
       resolve(post)
       console.log('post received in node context', post);
     });
