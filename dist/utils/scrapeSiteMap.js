@@ -25,7 +25,7 @@ var read = _bluebird2['default'].promisify(_fs2['default'].read);
 
 var sitesUrl = "http://www.craigslist.org/about/sites";
 var userAgent = 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1';
-var writePath = '/Users/homestead/Dropbox/Code/talos/server/json/siteMap.json';
+var writePath = '/Users/homestead/Dropbox/Code/talos/server/maps/siteMap.json';
 
 var spooky = new _spooky2['default']({
   casper: {
@@ -58,7 +58,9 @@ var spooky = new _spooky2['default']({
           currentListOfSites.forEach(function (site) {
             var siteName = site.innerText.replace(/\/|\(|\)|\./g, '').split(' ').filter(function (r) {
               return r.length > 0;
-            }).map(function (r) {
+            })
+            // capitalize first letter
+            .map(function (r) {
               return r[0].toUpperCase() + r.slice(1);
             }).join(' ').split('-').join(' ');
             var siteAddress = site.getAttribute('href').split('//')[1].split('.')[0];

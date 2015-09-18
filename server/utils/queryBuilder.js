@@ -4,6 +4,7 @@ import Promise from 'bluebird';
 
 let readFile = Promise.promisify(fs.readFile);
 
+// converts the req.body to the options object getPost needs
 export function getPostParams(post) {
   let url = new URL(post.url);
   return {
@@ -12,6 +13,7 @@ export function getPostParams(post) {
   }
 }
 
+// converts the req.body to the options object search needs
 export function getSearchParams(search) {
   return parseSite(search)
     .then(parseBoard)
@@ -19,12 +21,12 @@ export function getSearchParams(search) {
       return {
         host: 'http://' + params.region + '.craigslist.org',
         path: params.board + '?query=' + params.query
-      }
+      };
   });
 }
 
 function parseSite(search) {
-  const siteMap = '/Users/homestead/Dropbox/Code/talos/server/json/siteMap.json';
+  const siteMap = '/Users/homestead/Dropbox/Code/talos/server/maps/siteMap.json';
   return readFile(siteMap, 'utf-8')
     .then(sites => {
       let map = JSON.parse(sites);
@@ -39,7 +41,7 @@ function parseSite(search) {
 }
 
 function parseBoard(search) {
-  const categoryMap = '/Users/homestead/Dropbox/Code/talos/server/json/categoryMap.json';
+  const categoryMap = '/Users/homestead/Dropbox/Code/talos/server/maps/categoryMap.json';
   return readFile(categoryMap, 'utf-8')
     .then(categories => {
       let map = JSON.parse(categories);
@@ -55,7 +57,3 @@ function parseBoard(search) {
       return search;
     });
 }
-
-
-
-

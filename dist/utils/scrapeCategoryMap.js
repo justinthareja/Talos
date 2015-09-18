@@ -8,10 +8,6 @@ var _spooky = require('spooky');
 
 var _spooky2 = _interopRequireDefault(_spooky);
 
-var _lodash = require('lodash');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
 var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
@@ -25,7 +21,7 @@ var read = _bluebird2['default'].promisify(_fs2['default'].read);
 
 var sitesUrl = "http://sfbay.craigslist.org/";
 var userAgent = 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1';
-var writePath = '/Users/homestead/Dropbox/Code/talos/server/json/categoryMap.json';
+var writePath = '/Users/homestead/Dropbox/Code/talos/server/maps/categoryMap.json';
 
 var spooky = new _spooky2['default']({
   casper: {
@@ -50,6 +46,7 @@ var spooky = new _spooky2['default']({
         var isForum = header.getAttribute('href').split('/').length !== 3;
         var subcategories = [].slice.call(header.parentElement.nextElementSibling.querySelectorAll('a'));
         var headerName = header.querySelector('.txt').innerText;
+        headerName = headerName[0].toUpperCase() + headerName.slice(1);
         var headerPath = header.getAttribute('href');
 
         // skip the discussion forums and resume categories
@@ -69,6 +66,7 @@ var spooky = new _spooky2['default']({
           .replace(/\+/g, ' and ').split('/').map(function (el) {
             return el.trim();
           }).join('-').replace(/\[|\]/g, '').trim();
+          subName = subName[0].toUpperCase() + subName.slice(1);
 
           var subPath = subcategory.getAttribute('class');
           var subPaths = subPath.split(' ');

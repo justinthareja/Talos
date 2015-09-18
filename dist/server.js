@@ -28,6 +28,7 @@ var _bluebird = require('bluebird');
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
+// TODO: pagination
 var app = (0, _express2['default'])();
 
 exports.app = app;
@@ -49,15 +50,15 @@ function verifySearchParams(req, res, next) {
   next();
 }
 
-function sendSearchResults(req, res, next) {
+function sendSearchResults(req, res) {
   (0, _utilsQueryBuilderJs.getSearchParams)(req.body).then(_utilsSearchJs.search).then(function (results) {
     res.json(results);
   })['catch'](function (err) {
     res.status(500).send(err);
   });
-};
+}
 
-function sendPost(req, res, next) {
+function sendPost(req, res) {
   var options = (0, _utilsQueryBuilderJs.getPostParams)(req.body);
   (0, _utilsGetPostJs.getPost)(options).then(function (results) {
     res.json(results);

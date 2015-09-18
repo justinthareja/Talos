@@ -1,6 +1,5 @@
 import 'babel/polyfill';  
 import Spooky from 'spooky';
-import _ from 'lodash';
 import fs from 'fs';
 import Promise from 'bluebird';
 
@@ -9,7 +8,7 @@ var read = Promise.promisify(fs.read);
 
 const sitesUrl = "http://sfbay.craigslist.org/";
 const userAgent = 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1';
-const writePath = '/Users/homestead/Dropbox/Code/talos/server/json/categoryMap.json';
+const writePath = '/Users/homestead/Dropbox/Code/talos/server/maps/categoryMap.json';
 
 
 let spooky = new Spooky({
@@ -34,7 +33,8 @@ let spooky = new Spooky({
         headers.forEach(function(header) {
           let isForum = header.getAttribute('href').split('/').length !== 3;
           let subcategories = [].slice.call(header.parentElement.nextElementSibling.querySelectorAll('a'));
-          let headerName = header.querySelector('.txt').innerText;
+          let headerName = header.querySelector('.txt').innerText
+          headerName = headerName[0].toUpperCase() + headerName.slice(1);
           let headerPath = header.getAttribute('href');
           
           // skip the discussion forums and resume categories
@@ -54,6 +54,7 @@ let spooky = new Spooky({
               .replace(/\+/g, ' and ')
               .split('/').map(el => el.trim()).join('-')
               .replace(/\[|\]/g, '').trim();
+            subName = subName[0].toUpperCase() + subName.slice(1);
 
             let subPath = subcategory.getAttribute('class');
             let subPaths = subPath.split(' ');

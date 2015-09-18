@@ -6,7 +6,7 @@ import {getSearchParams, getPostParams} from './utils/queryBuilder.js';
 import fs from 'fs';
 import Promise from 'bluebird';
 
-
+// TODO: pagination
 export var app = express();
 
 var readFile = Promise.promisify(fs.readFile);
@@ -19,34 +19,34 @@ app.listen(port);
 
 
 function verifySearchParams(req, res, next) {
-  if (!req.body.zone) res.status(400).send('No zone found'); 
-  if (!req.body.territory) res.status(400).send('No territory found'); 
-  if (!req.body.site) res.status(400).send('No site found'); 
-  if (!req.body.category) res.status(400).send('No category found'); 
-  if (!req.body.query) res.status(400).send('No query found'); 
+  if (!req.body.zone) res.status(400).send('No zone found');
+  if (!req.body.territory) res.status(400).send('No territory found');
+  if (!req.body.site) res.status(400).send('No site found');
+  if (!req.body.category) res.status(400).send('No category found');
+  if (!req.body.query) res.status(400).send('No query found');
   // TODO: verify category and site from siteMap and categoryMap
   next();
 }
 
-function sendSearchResults (req, res, next) {
+function sendSearchResults (req, res) {
   getSearchParams(req.body)
     .then(search)
     .then(results => {
       res.json(results);
     })
     .catch(err => {
-      res.status(500).send(err)
+      res.status(500).send(err);
     });
-};
+}
 
-function sendPost(req, res, next) {
+function sendPost(req, res) {
   let options = getPostParams(req.body);
   getPost(options)
     .then(results => {
       res.json(results);
     })
     .catch(err => {
-      res.status(500).send(err)
+      res.status(500).send(err);
     });
 }
 

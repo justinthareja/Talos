@@ -28,8 +28,6 @@ function getPost(params) {
   var $scope = _lodash2['default'].extend(params, helpers);
 
   return new Promise(function (resolve, reject) {
-    var _this = this;
-
     var postUrl = $scope.host + $scope.path;
 
     var spooky = new _spooky2['default']({
@@ -41,7 +39,7 @@ function getPost(params) {
       if (err) {
         e = new Error('Failed to initialize SpookyJS');
         e.details = err;
-        throw e;
+        reject(e);
       }
       spooky.start(postUrl);
       spooky.userAgent(userAgent);
@@ -62,10 +60,17 @@ function getPost(params) {
     });
 
     spooky.on('error', function (e, stack) {
-      reject(e);
-      if (stack) {
-        console.log(stack);
-      }
+      reject({
+        err: e,
+        stack: stack
+      });
+    });
+
+    spooky.on('page.error', function (e, stack) {
+      reject({
+        err: e,
+        stack: stack
+      });
     });
 
     spooky.on('console', function (line) {
@@ -78,20 +83,13 @@ function getPost(params) {
       }
     });
 
-    spooky.on('got post', function (post) {
-      // This is where the post object will live in the node context
-      resolve(post);
-      console.log('post received in node context', post);
-    });
-
     spooky.on('remote.message', function (msg) {
-      _this.log('remote message caught: ' + msg, 'info');
       console.log('remote message caught: ' + msg);
     });
 
-    spooky.on('page.error', function (msg, trace) {
-      console.log('Error: ' + msg);
-      _this.log('Error: ' + msg, 'ERROR');
+    spooky.on('got post', function (post) {
+      // This is where the post object will live in the node context
+      resolve(post);
     });
   });
 }
@@ -146,9 +144,14 @@ function checkCaptcha() {
 }
 
 function checkPostExists() {
+  if (this.status(false).currentHTTPStatus === 404) {
+    window.post = null;
+    throw new Error('Invalid post url');
+    this.bypass(3);
+  }
   if (this.exists('#has_been_removed')) {
     window.post = null;
-    this.log('Error: Post Removed --- popping the Eject', 'error');
+    throw new Error('Post has been removed');
     this.bypass(3);
   }
 }
