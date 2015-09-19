@@ -20,7 +20,7 @@ export function getSearchParams(search) {
     .then(params => {
       return {
         host: 'http://' + params.region + '.craigslist.org',
-        path: params.board + '?query=' + params.query
+        path: params.board + '?' + 's=' + (params.page - 1) * 100 + '&' + 'query=' + params.query
       };
   });
 }

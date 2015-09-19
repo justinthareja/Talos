@@ -86,14 +86,14 @@ function getPostDetails() {
   let post = window.post = {};
 
   // Add main page attributes (if they exist);
-  window.post.body = this.fetchText('#postingbody');
-  window.post.images = this.getElementsAttribute('#thumbs a', 'href');
-  window.post.title = this.fetchText('title');
-  window.post.url = this.getCurrentUrl();
-  window.post.price = this.fetchText('.price');
+  post.body = this.fetchText('#postingbody');
+  post.images = this.getElementsAttribute('#thumbs a', 'href');
+  post.title = this.fetchText('title');
+  post.url = this.getCurrentUrl();
+  post.price = this.fetchText('.price');
 
   // Add location attributes (if they exist);
-  let location = window.post.location = {};
+  let location = post.location = {};
   location.region = this.fetchText('.postingtitletext small');
   location.lat = this.getElementAttribute('#map', 'data-latitude');
   location.long = this.getElementAttribute('#map', 'data-longitude');
@@ -104,7 +104,7 @@ function getPostDetails() {
 }
 
 function getContactDetails() {
-  // Still has access to window.post defined in previous step
+  // Still has access to post defined in previous step
   let contact = window.post.contact = {};
   // Re-build helper function once in Casper context 
   let nameExists = new Function(name.body).bind(this);

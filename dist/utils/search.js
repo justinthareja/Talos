@@ -75,10 +75,16 @@ function search($scope) {
   });
 }
 
+// page 1 201 to 220 of 220
+// page 2 s = 100
+// page 3 s = 200
+// page n
 /******CASPER FUNCTIONS******/
 function getResults() {
+  var results = {};
+
   // Evaluate's second argument takes an object of primitives to be passed into page context
-  var results = this.evaluate(function (host) {
+  results.posts = this.evaluate(function (host) {
     var rowNodes = document.querySelectorAll('.content .row');
     var rowList = [].slice.call(rowNodes);
 
@@ -96,9 +102,18 @@ function getResults() {
 
       return list.concat(post);
     }, []);
-  }, {
-    host: host
+  }, { host: host });
+
+  results.totalResults = this.evaluate(function () {
+    return parseInt(document.querySelector('.totalcount').innerText);
   });
+
+  results.currentPage = this.evaluate(function () {
+    var upperBound = parseInt(document.querySelector('.rangeTo').innerText);
+    return Math.ceil(upperBound / 100);
+  });
+
+  results.numPages = Math.ceil(results.totalResults / 100);
 
   this.emit('search complete', results);
 }
